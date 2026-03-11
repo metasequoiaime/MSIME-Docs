@@ -6,6 +6,9 @@
 
 - TSF 端: <https://github.com/fanlumaster/MetaIMETsf>
 - Server 端: <https://github.com/fanlumaster/MetaIMEServer>
+- UI 界面: <https://github.com/fanlumaster/MetasequoiaImeUiHtml>
+- 语音输入法: <https://github.com/fanlumaster/MetasequoiaVoiceInput>
+- 输入法词典: <https://github.com/fanlumaster/MetasequoiaImeDict>
 
 ## 截图
 
@@ -33,4 +36,8 @@
 
 ## 感谢
 
+- 开源签名证书(50 欧元/年的 Sign in Cloud 版本): <https://www.certum.eu/en/>
+
 ## 许可协议
+
+GPL-3.0.
