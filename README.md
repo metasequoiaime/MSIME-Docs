@@ -9,6 +9,7 @@
 - UI 界面: <https://github.com/fanlumaster/MetasequoiaImeUiHtml>
 - 语音输入法: <https://github.com/fanlumaster/MetasequoiaVoiceInput>
 - 输入法词典: <https://github.com/fanlumaster/MetasequoiaImeDict>
+- 输入法日志: <https://github.com/fanlumaster/MetasequoiaImeLog>
 
 ## 截图
 
