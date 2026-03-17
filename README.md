@@ -4,12 +4,17 @@
 
 ## 开源代码
 
-- TSF 端: <https://github.com/fanlumaster/MetaIMETsf>
-- Server 端: <https://github.com/fanlumaster/MetaIMEServer>
-- UI 界面: <https://github.com/fanlumaster/MetasequoiaImeUiHtml>
-- 语音输入法: <https://github.com/fanlumaster/MetasequoiaVoiceInput>
-- 输入法词典: <https://github.com/fanlumaster/MetasequoiaImeDict>
-- 输入法日志: <https://github.com/fanlumaster/MetasequoiaImeLog>
+- TSF 端: <https://github.com/metasequoiaime/MetaIMETsf>
+- Server 端: <https://github.com/metasequoiaime/MetaIMEServer>
+- UI 界面: <https://github.com/metasequoiaime/MetasequoiaImeUiHtml>
+- 输入法引擎: <https://github.com/metasequoiaime/MetasequoiaImeEngine>
+- 输入法词典: <https://github.com/metasequoiaime/MetasequoiaImeDict>
+- 个人自定义词典: <https://github.com/metasequoiaime/MetasequoiaImeCustomDict>
+- 辅助码: <https://github.com/metasequoiaime/MetasequoiaImeHelpCode>
+- 输入法日志: <https://github.com/metasequoiaime/MetasequoiaImeLog>
+- 原安卓谷歌拼音输入法引擎: <https://github.com/metasequoiaime/googlepinyinime-rev>
+- 语音输入法: <https://github.com/metasequoiaime/MetasequoiaVoiceInput>
+- n-gram 拼音联想算法: <https://github.com/metasequoiaime/Metasequoia-n-gram>
 
 ## 截图
 
