@@ -1,20 +1,33 @@
 # Metasequoia IME(水杉输入法)
 
-水杉输入法是一个 Windows 输入法，是一个纯 TSF 输入法。
+水杉输入法起初是一个 Windows 上的纯 TSF 输入法，现在各平台前端共用同一套 C++ 输入引擎：Windows 公开内测中，macOS 已发布，Linux（IBus）和 iOS 前端正在开发中。
 
 ## 开源代码
 
-- TSF 端: <https://github.com/metasequoiaime/MetaIMETsf>
-- Server 端: <https://github.com/metasequoiaime/MetaIMEServer>
-- UI 界面: <https://github.com/metasequoiaime/MetasequoiaImeUiHtml>
-- 输入法引擎: <https://github.com/metasequoiaime/MetasequoiaImeEngine>
-- 输入法词典: <https://github.com/metasequoiaime/MetasequoiaImeDict>
-- 个人自定义词典: <https://github.com/metasequoiaime/MetasequoiaImeCustomDict>
+平台前端：
+
+- Windows TSF 端: <https://github.com/metasequoiaime/MSIME-Windows>
+- Apple 平台（macOS / iOS）: <https://github.com/metasequoiaime/MSIME-Apple>
+- Linux（IBus）: <https://github.com/metasequoiaime/MSIME-Linux>
+
+引擎与数据：
+
+- 输入法引擎: <https://github.com/metasequoiaime/MSIME-Engine>
+- Server 端: <https://github.com/metasequoiaime/MSIME-Server>
+- 输入法词典: <https://github.com/metasequoiaime/MSIME-Dict>
+- 个人自定义词典: <https://github.com/metasequoiaime/MSIME-CustomDict>
 - 辅助码: <https://github.com/metasequoiaime/MetasequoiaImeHelpCode>
-- 输入法日志: <https://github.com/metasequoiaime/MetasequoiaImeLog>
-- 原安卓谷歌拼音输入法引擎: <https://github.com/metasequoiaime/googlepinyinime-rev>
-- 语音输入法: <https://github.com/metasequoiaime/MetasequoiaVoiceInput>
 - n-gram 拼音联想算法: <https://github.com/metasequoiaime/Metasequoia-n-gram>
+- 原安卓谷歌拼音输入法引擎: <https://github.com/metasequoiaime/Google-PinyinIME-Rev>
+
+界面与工具：
+
+- 原生 GUI 框架: <https://github.com/metasequoiaime/MSIME-UI>
+- UI 界面（WebView2 资源）: <https://github.com/metasequoiaime/MetasequoiaImeUiHtml>
+- 语音输入法: <https://github.com/metasequoiaime/MetasequoiaVoiceInput>
+- 输入法日志: <https://github.com/metasequoiaime/MetasequoiaImeLog>
+- 安装器: <https://github.com/metasequoiaime/msime-installer>
+- 皮肤示例: <https://github.com/metasequoiaime/metasequoia-ime-skin-example>
 
 ## 截图
 
@@ -36,9 +49,9 @@
 
 ## 贡献
 
-由于本输入法可能会向用户收取少量费用以维持开源和长期开发，所以，暂时尽可能不接受代码贡献。
+欢迎参与。方向不限于写代码——整理词库、补文档、做本地化、测兼容性、录教程同样算贡献。可参与的方向按类别列在[招募开源开发者](https://github.com/metasequoiaime/.github/blob/main/RECRUITING.md)，通用约定见[贡献指南](https://github.com/metasequoiaime/.github/blob/main/CONTRIBUTING.md)。
 
-开源更多是因为出于对于隐私的担忧，希望打消用户对于隐私的顾虑。
+开源的一个理由是隐私：输入法能看到用户输入的一切，这件事不该靠承诺保证，而该能被任何人直接读代码检查。
 
 ## 感谢
 
