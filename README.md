@@ -19,7 +19,7 @@
 引擎与数据：
 
 - 输入法引擎: <https://github.com/metasequoiaime/MSIME-Engine>
-- Server 端: <https://github.com/metasequoiaime/MSIME-Server>
+- Server 端: <https://github.com/metasequoiaime/MSIME-Windows/tree/main/server>
 - 输入法词典与构建器: <https://github.com/metasequoiaime/MSIME-Engine/tree/main/dictionary>
 - 自定义词典包: <https://github.com/metasequoiaime/MSIME-Engine/tree/main/dictionary/custom>
 - 辅助码: <https://github.com/metasequoiaime/MSIME-Engine/tree/main/helpcode>
@@ -28,11 +28,11 @@
 
 界面与工具：
 
-- 原生 GUI 框架: <https://github.com/metasequoiaime/MSIME-UI>
-- UI 界面（WebView2 资源）: <https://github.com/metasequoiaime/MSIME-UiHtml>
+- 原生 GUI 框架: <https://github.com/metasequoiaime/MSIME-Windows/tree/main/ui>
+- UI 界面（WebView2 资源）: <https://github.com/metasequoiaime/MSIME-Windows/tree/main/ui-html>
 - 公共语音模块: <https://github.com/metasequoiaime/MSIME-Engine/tree/main/voice>
-- 输入法日志: <https://github.com/metasequoiaime/MetasequoiaImeLog>
-- 安装器: <https://github.com/metasequoiaime/MSIME-Installer>
+- 输入法日志: <https://github.com/metasequoiaime/MSIME-Windows/tree/main/log>
+- 安装器: <https://github.com/metasequoiaime/MSIME-Windows/tree/main/installer>
 - 皮肤示例: <https://github.com/metasequoiaime/metasequoia-ime-skin-example>
 
 ## 截图
