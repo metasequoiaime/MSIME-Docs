@@ -16,17 +16,17 @@
 - Server 端: <https://github.com/metasequoiaime/MSIME-Server>
 - 输入法词典: <https://github.com/metasequoiaime/MSIME-Dict>
 - 个人自定义词典: <https://github.com/metasequoiaime/MSIME-CustomDict>
-- 辅助码: <https://github.com/metasequoiaime/MetasequoiaImeHelpCode>
+- 辅助码: <https://github.com/metasequoiaime/MSIME-HelpCode>
 - n-gram 拼音联想算法: <https://github.com/metasequoiaime/Metasequoia-n-gram>
 - 原安卓谷歌拼音输入法引擎: <https://github.com/metasequoiaime/Google-PinyinIME-Rev>
 
 界面与工具：
 
 - 原生 GUI 框架: <https://github.com/metasequoiaime/MSIME-UI>
-- UI 界面（WebView2 资源）: <https://github.com/metasequoiaime/MetasequoiaImeUiHtml>
+- UI 界面（WebView2 资源）: <https://github.com/metasequoiaime/MSIME-UiHtml>
 - 语音输入法: <https://github.com/metasequoiaime/MetasequoiaVoiceInput>
 - 输入法日志: <https://github.com/metasequoiaime/MetasequoiaImeLog>
-- 安装器: <https://github.com/metasequoiaime/msime-installer>
+- 安装器: <https://github.com/metasequoiaime/MSIME-Installer>
 - 皮肤示例: <https://github.com/metasequoiaime/metasequoia-ime-skin-example>
 
 ## 截图
