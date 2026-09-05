@@ -2,6 +2,10 @@
 
 水杉输入法起初是一个 Windows 上的纯 TSF 输入法，现在各平台前端共用同一套 C++ 输入引擎：Windows 公开内测中，macOS 已发布，Linux（IBus）和 iOS 前端正在开发中。
 
+## 用户文档
+
+[Windows 使用指南](guides/windows.md) 是官网文档正文的唯一来源。修改用户说明请在本仓提交，MSIME-Web 通过固定的 Docs 子模块渲染；构建/API 说明仍由各代码仓库维护。
+
 ## 开源代码
 
 平台前端：
