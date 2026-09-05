@@ -303,7 +303,7 @@ github	GitHub	15000
 
 ### 语音输入
 
-语音输入需要网络服务，目前只支持硅基流动（SiliconFlow）。使用前请在硅基流动申请自己的 API Token；其他厂商即使接口格式相似，目前也不能保证正常识别或润色。
+Windows 语音输入使用配置好的网络服务。当前设置提供豆包、OpenAI、SiliconFlow 和 Groq 的识别配置，文本润色可以单独选择服务。请按所用服务填写接口、模型和凭据；账户需具有对应接口权限。
 
 #### 启用语音输入
 
@@ -321,17 +321,17 @@ github	GitHub	15000
 
 #### ASR API
 
-- **服务提供商**：当前固定为 `siliconflow`，不需要改成其他厂商名称。
-- **API Token**：填写在硅基流动申请的访问令牌。Token 会写入本机配置，请勿分享配置文件或相关截图。
-- **接口地址**：硅基流动的语音转文字接口，默认是 `https://api.siliconflow.cn/v1/audio/transcriptions`。除非硅基流动调整接口地址，否则保持默认即可。
+- **服务提供商**：选择 `doubao`、`openai`、`siliconflow` 或 `groq`。豆包使用流式识别，其余使用语音转写接口。
+- **API Token**：填写所选提供商的访问令牌，各提供商分别保存。请勿分享包含凭据的配置文件或截图。
+- **接口地址与模型**：使用所选提供商的对应值。豆包还需要 App Key、资源 ID 等流式接口配置；这些值不能拿其他提供商的 Token 代替。
 
 #### 文本润色 API
 
-开启后，语音识别结果会再交给硅基流动的文本接口整理，然后上屏。如果只需要原始识别结果，可以关闭此项。
+开启后，语音识别结果会发送给单独配置的文本服务整理，然后上屏。如果只需要原始识别结果，可以关闭此项。
 
-- **服务提供商**：当前同样固定为 `siliconflow`。
-- **API Token**：填写可调用硅基流动文本模型的 Token，可以与上面的 ASR Token 相同，但仍需确保账户有相应接口权限。
-- **接口地址**：默认是 `https://api.siliconflow.cn/v1/chat/completions`，一般保持默认。
+- **服务提供商**：可选 `siliconflow`、`openai`、`deepseek` 或 `groq`。
+- **API Token**：填写可调用所选文本模型的 Token，润色配置与识别配置独立。
+- **接口地址与模型**：填写所选文本服务的聊天补全接口和模型。润色会发送转写文本，关闭后直接使用识别结果。
 
 #### 基础设置
 
@@ -435,13 +435,13 @@ mail	example@example.com	10
 
 ## 项目结构
 
-- [MSIME-Windows](https://github.com/metasequoiaime/MSIME-Windows)：Windows TSF 前端。
-- [MSIME-Server](https://github.com/metasequoiaime/MSIME-Server)：Windows 常驻后端，负责引擎调度和窗口渲染。
+- [MSIME-Windows](https://github.com/metasequoiaime/MSIME-Windows)：Windows 平台产品（TSF、Server、GUI、页面与安装器）。
+- [Windows/server](https://github.com/metasequoiaime/MSIME-Windows/tree/main/server)：Windows 常驻后端，负责引擎调度和窗口渲染。
 - [MSIME-Engine](https://github.com/metasequoiaime/MSIME-Engine)：跨平台输入引擎，各平台前端共用。
-- [MSIME-UiHtml](https://github.com/metasequoiaime/MSIME-UiHtml)：WebView2 界面资源。
-- [MSIME-UI](https://github.com/metasequoiaime/MSIME-UI)：自研原生 GUI 框架。
-- [MSIME-Dict](https://github.com/metasequoiaime/MSIME-Dict)：词库。
-- [MSIME-HelpCode](https://github.com/metasequoiaime/MSIME-HelpCode)：辅助码。
+- [Windows/ui-html](https://github.com/metasequoiaime/MSIME-Windows/tree/main/ui-html)：WebView2 界面资源。
+- [Windows/ui](https://github.com/metasequoiaime/MSIME-Windows/tree/main/ui)：自研原生 GUI 框架。
+- [Engine/dictionary](https://github.com/metasequoiaime/MSIME-Engine/tree/main/dictionary)：公共词库、自定义包和构建器。
+- [Engine/helpcode](https://github.com/metasequoiaime/MSIME-Engine/tree/main/helpcode)：辅助码。
 - [MSIME-Apple](https://github.com/metasequoiaime/MSIME-Apple) / [MSIME-Linux](https://github.com/metasequoiaime/MSIME-Linux)：macOS、iOS 与 Linux 前端。
 
 文档会随功能继续更新。如果发现说明和实际行为不一致，欢迎在 [GitHub Issues](https://github.com/metasequoiaime/MSIME-Windows/issues) 中反馈。

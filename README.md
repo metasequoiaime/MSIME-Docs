@@ -4,7 +4,9 @@
 
 ## 用户文档
 
-[Windows 使用指南](guides/windows.md) 是官网文档正文的唯一来源。修改用户说明请在本仓提交，MSIME-Web 通过固定的 Docs 子模块渲染；构建/API 说明仍由各代码仓库维护。
+[Windows 使用指南](guides/windows.md) 是官网 Windows 文档正文的唯一来源；[macOS 语音输入](guides/macos-voice.md) 说明公共语音模块在 macOS 的使用方式。修改用户说明请在本仓提交，MSIME-Web 通过固定的 Docs 子模块渲染；构建/API 说明仍由各代码仓库维护。
+
+仓库边界与数据来源见[公共仓库与平台架构](architecture/repositories.md)。
 
 ## 开源代码
 
@@ -17,20 +19,20 @@
 引擎与数据：
 
 - 输入法引擎: <https://github.com/metasequoiaime/MSIME-Engine>
-- Server 端: <https://github.com/metasequoiaime/MSIME-Server>
-- 输入法词典: <https://github.com/metasequoiaime/MSIME-Dict>
-- 个人自定义词典: <https://github.com/metasequoiaime/MSIME-CustomDict>
-- 辅助码: <https://github.com/metasequoiaime/MSIME-HelpCode>
+- Server 端: <https://github.com/metasequoiaime/MSIME-Windows/tree/main/server>
+- 输入法词典与构建器: <https://github.com/metasequoiaime/MSIME-Engine/tree/main/dictionary>
+- 自定义词典包: <https://github.com/metasequoiaime/MSIME-Engine/tree/main/dictionary/custom>
+- 辅助码: <https://github.com/metasequoiaime/MSIME-Engine/tree/main/helpcode>
 - n-gram 拼音联想算法: <https://github.com/metasequoiaime/Metasequoia-n-gram>
 - 原安卓谷歌拼音输入法引擎: <https://github.com/metasequoiaime/Google-PinyinIME-Rev>
 
 界面与工具：
 
-- 原生 GUI 框架: <https://github.com/metasequoiaime/MSIME-UI>
-- UI 界面（WebView2 资源）: <https://github.com/metasequoiaime/MSIME-UiHtml>
-- 语音输入法: <https://github.com/metasequoiaime/MetasequoiaVoiceInput>
-- 输入法日志: <https://github.com/metasequoiaime/MetasequoiaImeLog>
-- 安装器: <https://github.com/metasequoiaime/MSIME-Installer>
+- 原生 GUI 框架: <https://github.com/metasequoiaime/MSIME-Windows/tree/main/ui>
+- UI 界面（WebView2 资源）: <https://github.com/metasequoiaime/MSIME-Windows/tree/main/ui-html>
+- 公共语音模块: <https://github.com/metasequoiaime/MSIME-Engine/tree/main/voice>
+- 输入法日志: <https://github.com/metasequoiaime/MSIME-Windows/tree/main/log>
+- 安装器: <https://github.com/metasequoiaime/MSIME-Windows/tree/main/installer>
 - 皮肤示例: <https://github.com/metasequoiaime/metasequoia-ime-skin-example>
 
 ## 截图
