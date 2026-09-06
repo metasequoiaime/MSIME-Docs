@@ -50,7 +50,7 @@ Windows 的 TSF DLL 加载到宿主应用中，Server 在独立进程中调度�
 | 移动词库 | 经校验的源数据库与固定构建器 | 使用 `build_profile.py` 的移动 profile 生成 |
 | 用户词条与学习 | 本机运行时数据 | 由平台持久化，在基础数据更新时按平台流程回放 |
 
-新版数据清单和平台锁文件共同描述发布输入。历史无清单数据只能使用消费者明确支持的兼容入口，不能把任意缺少清单的数据视为合法旧版。具体格式字段、校验命令和兼容测试留在 [Engine 契约目录](https://github.com/metasequoiaime/MSIME-Engine/tree/main/contracts) 与各平台构建文档。
+新版数据清单和平台锁文件共同描述发布输入。历史无清单数据只能使用消费者明确支持的兼容入口，不能把任意缺少清单的数据视为合法旧版。具体格式字段、校验命令和兼容测试留在 [Engine 契约目录](https://github.com/metasequoiaime/MSIME-Engine/tree/develop/contracts) 与各平台构建文档。
 
 ## 文档与网站发布
 
@@ -66,10 +66,10 @@ Windows 的 TSF DLL 加载到宿主应用中，Server 在独立进程中调度�
 | --- | --- |
 | 某个宿主中的按键、光标、候选窗、焦点、安装或上屏问题 | 对应 [Windows](https://github.com/metasequoiaime/MSIME-Windows)、[Apple](https://github.com/metasequoiaime/MSIME-Apple) 或 [Linux](https://github.com/metasequoiaime/MSIME-Linux) 平台仓库 |
 | 候选顺序、组词、联想或纠错问题 | [Engine](https://github.com/metasequoiaime/MSIME-Engine) |
-| 词条、拼音、权重或词库构建问题 | [Engine/dictionary](https://github.com/metasequoiaime/MSIME-Engine/tree/main/dictionary) |
-| 辅助码筛选或数据问题 | [Engine/helpcode](https://github.com/metasequoiaime/MSIME-Engine/tree/main/helpcode) |
-| Windows 设置页面、托盘、工具栏 | [Windows/server](https://github.com/metasequoiaime/MSIME-Windows/tree/main/server) |
-| Windows 安装、升级与卸载 | [Windows/installer](https://github.com/metasequoiaime/MSIME-Windows/tree/main/installer) |
+| 词条、拼音、权重或词库构建问题 | [Engine/dictionary](https://github.com/metasequoiaime/MSIME-Engine/tree/develop/dictionary) |
+| 辅助码筛选或数据问题 | [Engine/helpcode](https://github.com/metasequoiaime/MSIME-Engine/tree/develop/helpcode) |
+| Windows 设置页面、托盘、工具栏 | [Windows/server](https://github.com/metasequoiaime/MSIME-Windows/tree/develop/server) |
+| Windows 安装、升级与卸载 | [Windows/installer](https://github.com/metasequoiaime/MSIME-Windows/tree/develop/installer) |
 | 用户与开发说明缺失或过时 | [Docs](https://github.com/metasequoiaime/MSIME-Docs) |
 | 官网导航、下载链接或渲染 | [Web](https://github.com/metasequoiaime/MSIME-Web) |
 

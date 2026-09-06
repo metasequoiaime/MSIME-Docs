@@ -503,12 +503,12 @@ mail	example@example.com	10
 ## 项目结构
 
 - [MSIME-Windows](https://github.com/metasequoiaime/MSIME-Windows)：Windows 平台产品（TSF、Server、GUI、页面与安装器）。
-- [Windows/server](https://github.com/metasequoiaime/MSIME-Windows/tree/main/server)：Windows 常驻后端，负责引擎调度和窗口渲染。
+- [Windows/server](https://github.com/metasequoiaime/MSIME-Windows/tree/develop/server)：Windows 常驻后端，负责引擎调度和窗口渲染。
 - [MSIME-Engine](https://github.com/metasequoiaime/MSIME-Engine)：跨平台输入引擎，各平台前端共用。
-- [Windows/ui-html](https://github.com/metasequoiaime/MSIME-Windows/tree/main/ui-html)：WebView2 界面资源。
-- [Windows/ui](https://github.com/metasequoiaime/MSIME-Windows/tree/main/ui)：自研原生 GUI 框架。
-- [Engine/dictionary](https://github.com/metasequoiaime/MSIME-Engine/tree/main/dictionary)：公共词库、自定义包和构建器。
-- [Engine/helpcode](https://github.com/metasequoiaime/MSIME-Engine/tree/main/helpcode)：辅助码。
+- [Windows/ui-html](https://github.com/metasequoiaime/MSIME-Windows/tree/develop/ui-html)：WebView2 界面资源。
+- [Windows/ui](https://github.com/metasequoiaime/MSIME-Windows/tree/develop/ui)：自研原生 GUI 框架。
+- [Engine/dictionary](https://github.com/metasequoiaime/MSIME-Engine/tree/develop/dictionary)：公共词库、自定义包和构建器。
+- [Engine/helpcode](https://github.com/metasequoiaime/MSIME-Engine/tree/develop/helpcode)：辅助码。
 - [MSIME-Apple](https://github.com/metasequoiaime/MSIME-Apple) / [MSIME-Linux](https://github.com/metasequoiaime/MSIME-Linux)：macOS、iOS 与 Linux 前端。
 
 文档会随功能继续更新。如果发现说明和实际行为不一致，欢迎在 [GitHub Issues](https://github.com/metasequoiaime/MSIME-Windows/issues) 中反馈。
