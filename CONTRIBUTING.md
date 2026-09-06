@@ -9,6 +9,7 @@
 | 下载后的安装、输入、设置、备份和排障 | `guides/` 中对应平台指南 |
 | macOS 语音配置与权限 | `guides/macos-voice.md`，由 macOS 指南链接 |
 | 公共职责、输入链路与数据来源 | `architecture/repositories.md` |
+| 平台固定版本、公共能力接入与迁移验收 | `architecture/platform-adoption.md` |
 | 阅读入口、平台范围、开发入口 | `README.md` |
 | 构建命令、API 与模块测试 | 对应实现仓库 |
 | 网站路由、页面样式、下载元数据 | MSIME-Web |
