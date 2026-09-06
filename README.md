@@ -17,6 +17,8 @@
 | macOS 12+ | [macOS 使用指南](guides/macos.md) · [语音输入](guides/macos-voice.md) | 安装、原生设置、快捷键、数据与卸载 |
 | Linux / IBus | [Linux 使用指南](guides/linux.md) | 安装启用、设置、桌面工具、语音命令与排障 |
 | iOS | [Apple 平台仓库](https://github.com/metasequoiaime/MSIME-Apple) | 开发中的键盘扩展，以实现仓进展为准 |
+| 跨平台 | [从其他输入法迁移](guides/migration.md) | 搜狗、微软拼音、Rime 的用户词库怎么带过来 |
+| 跨平台 | [无障碍现状](guides/accessibility.md) | 屏幕阅读器支持的实际状况与可参与的方向 |
 
 Windows 指南是官网对应正文的唯一来源。修改用户说明请在本仓提交，MSIME-Web 通过固定的 Docs 子模块渲染；构建/API 说明仍由各代码仓库维护。指南按已提交源码核对，具体安装版本可能有所不同，请结合 Release 阅读。
 
@@ -28,6 +30,7 @@ Windows 指南是官网对应正文的唯一来源。修改用户说明请在本
 | --- | --- |
 | 仓库职责、输入链路、数据来源与问题归属 | [公共仓库与平台架构](architecture/repositories.md) |
 | 平台消费版本与迁移验收 | [平台接入矩阵](architecture/platform-adoption.md) |
+| 进程边界、不可信输入、产物信任链与已知薄弱处 | [安全模型与信任边界](architecture/security-model.md) |
 | CI 检查、健康审计与排障 | [持续集成与自动维护](development/continuous-integration.md) |
 | 固定提交的跨平台兼容预检 | [Engine 接入预检](development/platform-preflight.md) |
 | 过往实施、核对依据与界面示例 | [历史记录](archive/README.md) |
