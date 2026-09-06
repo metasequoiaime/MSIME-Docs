@@ -71,7 +71,9 @@
 | [Apple #272](https://github.com/metasequoiaime/MSIME-Apple/pull/272)，`dee7659` | iOS bridge 使用 Session 动作与快照；macOS 仍用 InputSession，筛选和提示使用控制器所属码表 | 本地通用 macOS 构建、签名检查和 38 项 CTest 通过；iOS 模拟器构建及引导页 XCTest 通过；[原生 CI](https://github.com/metasequoiaime/MSIME-Apple/actions/runs/34006179512) arm64、x86_64、iOS 全部通过；真实设备内存和键盘宿主交互待验证 |
 | [Windows #178](https://github.com/metasequoiaime/MSIME-Windows/pull/178)，`0c63c06` | 对活动会话配置辅助码，候选提示读取该适配器持有码表；缓存未变化方案；同步产品锁 | 契约同步、产品锁校验和 18 项 Python 回归通过；[Windows 原生 CI](https://github.com/metasequoiaime/MSIME-Windows/actions/runs/34006530164) 全部通过，覆盖 Server 真实词库回归、TSF Win32/x64 构建和两种架构的管道探针 |
 
-后续 [Engine #37](https://github.com/metasequoiaime/MSIME-Engine/pull/37)（`424b745`）补充 `finish(first_index)`、辅助码开关/方案验证，以及独立英文模式快照。生产者本地 13 项根 CTest 通过，原生 CI 仍待结果。基于 Linux #84 的独立本地检出已将控制器、设置验证和在线请求头迁到公共 Session；25 项可移植 CTest 及新增方案开关往返回归通过。该候选尚未发布到消费者分支，须等 #37 合入后固定最终主分支提交，并重新验证原生 IBus/GTK；本地临时测试使用未合入生产者不能作为平台已接入证据。
+后续 [Engine #37](https://github.com/metasequoiaime/MSIME-Engine/pull/37)（`424b745`）补充 `finish(first_index)`、辅助码开关/方案验证，以及独立英文模式快照。生产者本地 13 项根 CTest 以及三平台、Linux ASan/UBSan、资源构建验证、公共语音 CI 均已通过。基于 Linux #84 的独立本地检出已将控制器、设置验证和在线请求头迁到公共 Session；25 项可移植 CTest 及新增方案开关往返回归通过。该候选尚未发布到消费者分支，须等 #37 合入后固定最终主分支提交，并重新验证原生 IBus/GTK；本地临时测试使用未合入生产者不能作为平台已接入证据。
+
+基于 Apple #272 的独立本地检出也已将 macOS 控制器、候选导航和五笔自动提交迁到公共 Session。Release 通用 arm64/x86_64 构建、38 项 CTest 和签名校验均通过；测试覆盖分页、活动组合隔离、空闲偏好切换及原有输入行为。该候选同样保留为本地补丁，等待 #37 合入后固定正式依赖并运行原生 CI。跨仓接口的合入须遵循组织治理中的维护者共识要求；绿勾不替代维护者评审。
 
 三个 PR 均未完成新的资源包和用户数据代际生命周期接入。Apple 的引导页 XCTest 不能证明第三方键盘在实际宿主中的交互；Windows 的 PR CI 也不代表签名、安装与 uiAccess 验证。后续应在同一最终提交补齐证据。
 
