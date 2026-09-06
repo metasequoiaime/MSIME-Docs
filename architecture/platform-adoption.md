@@ -8,23 +8,23 @@
 
 | 仓库 | 核对的主分支提交 |
 | --- | --- |
-| 组织规范 | [657c3813](https://github.com/metasequoiaime/.github/tree/657c38136f0dda0a2509bd36addf94ef3de9d6cf) |
-| Engine | [020e906a](https://github.com/metasequoiaime/MSIME-Engine/tree/020e906abe5a6af78cec70a1dced8789812eac52) |
-| Windows | [2b8bf937](https://github.com/metasequoiaime/MSIME-Windows/tree/2b8bf937d96e5ff80e19f97de5be594802d90b5d) |
-| Apple | [cb6b1403](https://github.com/metasequoiaime/MSIME-Apple/tree/cb6b1403c5614c434bf1182051c30e6c750b5d0c) |
-| Linux | [c746385a](https://github.com/metasequoiaime/MSIME-Linux/tree/c746385a35a892a544684e6db53ea48155ba898d) |
+| 组织规范 | [0f1ececc](https://github.com/metasequoiaime/.github/tree/0f1ececc474c5eb30277861b6f45ab41929f0c0d) |
+| Engine | [9f8df0ee](https://github.com/metasequoiaime/MSIME-Engine/tree/9f8df0eeb938402827da363cf57ebe5abce8b172) |
+| Windows | [2d51c538](https://github.com/metasequoiaime/MSIME-Windows/tree/2d51c5383925ce8174a60f5527cbda5ff03b7d9f) |
+| Apple | [8926a474](https://github.com/metasequoiaime/MSIME-Apple/tree/8926a474b41551c61de3a24d4dda9f52c1ec24a6) |
+| Linux | [76e6f369](https://github.com/metasequoiaime/MSIME-Linux/tree/76e6f3697847a119ac56443f003a1e25a375f8b3) |
 
 ## 已合入的接入状态
 
 | 能力 | Windows | macOS | iOS | Linux |
 | --- | --- | --- | --- | --- |
-| 公共输入会话 | Server 的 `EngineInputSession` 包装 `InputSession` | 原生控制器持有 `InputSession` | `shared/apple-bridge` 使用公共 `Session` | `InputController` 持有 `InputSession` |
-| Engine 固定提交 | `c63ba774` | `c63ba774` | 使用 Apple 固定版本 | `cc21e429` |
+| 公共输入会话 | Server 的 `EngineInputSession` 包装 `InputSession` | 原生控制器持有公共 `Session` 和值快照 | `shared/apple-bridge` 使用公共 `Session` | `InputController` 持有公共 `Session` 和值快照 |
+| Engine 固定提交 | `c63ba774` | `020e906a` | 使用 Apple 固定版本 | `020e906a` |
 | 词库发布来源 | Engine `dict-v1.0.0` | Engine `dict-v1.0.0` | 从 Apple 锁定数据生成 mobile profile | Engine `dict-v1.0.0` |
-| 锁定的词库文件 | `msime.db`、`english.db`、`others.db`、日语模型及授权文件 | `msime.db` | compact 拼音词库 | `msime.db`、`english.db`、`others.db` |
+| 锁定的词库文件 | `msime.db`、`english.db`、`others.db`、日语模型及授权文件 | `msime.db` | compact 拼音词库 | `msime.db`、`english.db`、`others.db`、日语模型及授权文件 |
 | 辅助码来源 | 固定 Engine 的 `helpcode/` | 固定 Engine 的 `helpcode/` | 不因 Engine 包含辅助码就自动开放 UI 功能 | 固定 Engine 的 `helpcode/` |
 | 公共语音 | 公共采集/协议，Server 保留传输与上屏 | 公共录音/识别及可选 Whisper，原生权限与上屏 | 无语音入口 | 公共协议，Linux 保留采集命令与 HTTP 传输 |
-| 新 `Session` facade / 显式 `RuntimePaths` | 兼容 InputSession，捕获旧目录布局 | 兼容 InputSession，捕获旧目录布局 | 公共 Session，捕获旧目录布局 | 尚未接入 |
+| 运行时路径 | 兼容 InputSession，捕获旧目录布局 | 公共 Session，捕获旧目录布局 | 公共 Session，捕获旧目录布局 | 公共 Session；#92 已贯通显式路径，默认安装仍捕获旧目录布局 |
 | 完整 desktop 资源 ZIP | 尚未接入 | 尚未接入 | 不直接采用 desktop profile | 尚未接入 |
 
 三个产品的词库来源提交均为 `d0dc0c2b594b5540b5de99ad12085c786410626e`。Engine gitlink 见上表，与词库来源用途不同，不要求相等。产物摘要以各自 `product-lock.json` 为准，本页不维护第二份摘要清单。
@@ -33,31 +33,31 @@
 
 ## 已合入生产者与兼容风险
 
-[Engine #34](https://github.com/metasequoiaime/MSIME-Engine/pull/34) 已合入主分支 `c63ba774ac03c9ff8ba82776d50e97d27fd459a3`，提供 `Session`、`RuntimePaths`、会话隔离和完整资源包构建能力。Windows #178、Apple #272 已合入并接入此版本；Linux 仍在 PR 中推进。后续公共桌面接口扩展 #37 已合入 `020e906a`。
+[Engine #34](https://github.com/metasequoiaime/MSIME-Engine/pull/34) 已合入主分支 `c63ba774ac03c9ff8ba82776d50e97d27fd459a3`，提供 `Session`、`RuntimePaths`、会话隔离和完整资源包构建能力。Windows #178、Apple #272 已合入并接入此版本。公共桌面接口扩展 #37 已合入 `020e906a`，Apple #274 和 Linux #84 已固定此版本并迁移桌面控制器。
 
-历史提交 `e31d726e` 的[Linux ASan/UBSan 检查](https://github.com/metasequoiaime/MSIME-Engine/actions/runs/34004189681/job/101408326006)失败于 `data_path` 的词典缓冲区泄漏。[Google-PinyinIME-Rev #4](https://github.com/metasequoiaime/Google-PinyinIME-Rev/pull/4) 随后已合入，Engine `2c8fdea6` 更新了固定版本，其[Linux 内存检查通过](https://github.com/metasequoiaime/MSIME-Engine/actions/runs/34005092776/job/101410700125)，修复随 #34 合入。以下保留预检历史，用于说明消费者必须同步修改的原因。
+[Engine #38](https://github.com/metasequoiaime/MSIME-Engine/pull/38) 已合入 `59b76c05`，在准备数据代际前拒绝重叠的资源、用户和缓存目录。[Engine #39](https://github.com/metasequoiaime/MSIME-Engine/pull/39) 已合入 `3a23c6e5`，完整资源包的真实消费者验证已进入建库 CI，覆盖学习回放、回退、缓存清理、失败准备和资源摘要不变。该验证复用同一份产物测试代际流程，不代表平台跨版本安装已经完成。
 
+早期解码器泄漏及辅助码预检失败的发现与修复见[历史预检记录](../archive/platform-adoption-preflight-2026-09-06.md)。
 直接更新 Engine 还存在这些接入差距：
 
 | 差距 | 当前消费点 | 迁移要求 |
 | --- | --- | --- |
-| 全局辅助码变成每会话配置 | Windows `EngineInputSession::ApplyConfiguration`、macOS `reloadSessionFromPreferences`、Linux `select_active_helpcode_schema` | 对活动会话使用实例配置，验证两个不同方案的会话互不影响；不能只改 gitlink |
-| 新 facade 只暴露动作和快照 | Windows 适配器还暴露原始序列 setter；macOS/Linux 依赖更宽的配置和查询接口 | 逐项映射现有行为，先确认公共接口能表达现有功能，禁止为迁移删除设置或复制状态机 |
+| 辅助码实例配置已接入 | Windows #178、Apple #272/#274、Linux #84 | 后续升级继续保留不同会话、不同方案的隔离回归 |
+| 新 facade 只暴露动作和快照 | Windows 适配器还暴露原始序列 setter，事件处理器自行管理部分候选和造词流程；macOS/Linux 已迁移 | 逐项映射现有行为，先确认公共接口能表达现有功能，禁止为迁移删除设置或复制状态机 |
 | 资源与用户数据生命周期分开 | 平台安装器、数据准备和偏好重置流程 | 明确不可变资源、持久用户数据、可丢弃缓存；准备/切换时暂停会话与写入，失败继续使用旧数据 |
 | desktop 准备入口不是通用移动安装器 | macOS 当前仅带主库，iOS 是 compact 拼音产品 | 保持平台已有资源规格；显式配置路径，不为了复用桌面准备函数强制增加英文/日语资源 |
-| 异步请求新增会话身份 | Windows/Linux 在线宿主与回调 | 保留完整请求身份，验证相同拼音的新会话也不能接收旧响应 |
+| 异步请求新增会话身份 | Linux 已通过 Session 回传完整请求；Windows 仍需迁移在线候选接入 | 保留完整请求身份，验证相同拼音的新会话也不能接收旧响应 |
 
 ## 接入预检实测
 
-2026-09-06 在 macOS / AppleClang 21 上，把上述 Apple 和 Linux 主分支的既有可移植测试与下列 Engine 提交分别编译、运行。源码和第三方子模块均从提交对象导出，不使用工作区的未提交修改。
+2026-09-06 在 macOS / AppleClang 21 上，使用组织预检脚本从提交对象导出 Engine、两个第三方子模块及消费者源码，编译并运行真实消费者的可移植测试。
 
-| Engine 提交 | iOS bridge 回归 | Linux 控制器回归 |
+| Engine 提交 | Apple 消费者提交 / iOS bridge | Linux 消费者提交 / 控制器 |
 | --- | --- | --- |
-| 平台当前固定 `cc21e429` | 通过 | 通过 |
-| 待接入 `e31d726e` | 通过 | 失败：`The independent Quanpin helpcode schema was not selected before input.` |
-| 泄漏修复后 `2c8fdea6` | 通过 | 同一辅助码断言失败 |
+| #41 的 `0655f93f663b8dfc536a78efacee159d147fe928`（待合入） | `8926a474b41551c61de3a24d4dda9f52c1ec24a6`：通过 | `13a07a55c6f7d402d43b3c024b8a24b0d0cb306d`：通过 |
+| #41 基于已合入 #40 更新的 `656c0200db6fc69d1bfcd70c2028ecaede14a6cb`（待合入） | `8926a474b41551c61de3a24d4dda9f52c1ec24a6`：通过 | `6c7a88d841ca5ea2497e1f69dd6994c85e696663`：通过 |
 
-失败由原有控制器测试报告，验证了辅助码实例配置需要随 Engine 更新同步迁移。此结果覆盖可移植 C++ 行为，不是 Linux IBus 原生实测，也不证明 iOS 模拟器、设备或安装已经通过。
+这次预检没有修改消费者 gitlink 或产品锁。它证明上述两个可移植消费者能与待评审 Engine 组合，不证明 Windows、原生输入法宿主或安装升级已经通过。早期失败记录保留在[归档](../archive/platform-adoption-preflight-2026-09-06.md)。
 
 使用组织仓库的[接入预检脚本](https://github.com/metasequoiaime/.github/blob/main/scripts/check-platform-adoption.py)重复比较，命令与范围见[接入预检说明](../development/platform-preflight.md)。脚本保留每次运行的 `evidence.json`、构建与测试日志，失败返回非零；平台原生 CI 仍是后续验收的一部分。
 
@@ -69,8 +69,11 @@ Engine 由 fanlusky、houko 共同维护。公共接口扩展 [Engine #37](https
 | --- | --- | --- |
 | [Windows #178](https://github.com/metasequoiaime/MSIME-Windows/pull/178) | 已合入；固定 c63ba774，隔离活动会话辅助码筛选与候选提示 | [CI](https://github.com/metasequoiaime/MSIME-Windows/actions/runs/34006530164) 全部通过，覆盖 Server 真实词库回归、TSF Win32/x64 构建及管道探针 |
 | [Apple #272](https://github.com/metasequoiaime/MSIME-Apple/pull/272) | 已合入；iOS bridge 使用 Session，macOS 仍用 InputSession 并隔离码表 | [CI](https://github.com/metasequoiaime/MSIME-Apple/actions/runs/34006179512) 全部通过；本地 38 项 CTest、iOS 模拟器构建和引导页 XCTest 通过 |
-| [Linux #84](https://github.com/metasequoiaime/MSIME-Linux/pull/84)，03fd1cf | 待合入；固定 020e906a，控制器、设置验证和在线请求头使用公共 Session | 当前提交本地 25 项可移植 CTest 和格式检查通过；新一轮原生 CI 待结果。旧兼容版本的四组 Ubuntu 绿勾不替代新提交验证 |
-| [Apple #274](https://github.com/metasequoiaime/MSIME-Apple/pull/274)，6804122 | 待合入；固定 020e906a，macOS 控制器、候选导航与五笔自动提交使用公共 Session | 当前提交 Release 通用 arm64/x86_64 构建、38 项 CTest、签名和架构校验通过；新一轮原生 CI 待结果 |
+| [Linux #84](https://github.com/metasequoiaime/MSIME-Linux/pull/84) | 已合入 `fd7f313`；固定 020e906a，控制器、设置验证和在线请求头使用公共 Session | 最终 PR 提交 `57eed98` 的[四组 Ubuntu CI](https://github.com/metasequoiaime/MSIME-Linux/actions/runs/34008164931) 均通过 |
+| [Apple #274](https://github.com/metasequoiaime/MSIME-Apple/pull/274) | 已合入 `d28d490`；固定 020e906a，macOS 控制器、候选导航与五笔自动提交使用公共 Session | PR 提交 `6804122` 的[macOS 双架构与 iOS CI](https://github.com/metasequoiaime/MSIME-Apple/actions/runs/34007476842) 通过；本地通用构建、38 项 CTest、签名和架构校验通过 |
+| [Linux #92](https://github.com/metasequoiaime/MSIME-Linux/pull/92) | 已合入 `76e6f369`；显式路径贯通控制器、词库检查与翻译侧文件，TGZ 打包使用独立 300 秒预算 | 最终 PR 提交 `a61f23d` 的[四组 Ubuntu CI](https://github.com/metasequoiaime/MSIME-Linux/actions/runs/34009842376) 全部通过，每组 38 项 CTest 和独立 IBus D-Bus smoke 通过。此前 macOS 的 Linux 专属 `/proc/self/exe` 失败未计作本地通过 |
+
+[Engine #40](https://github.com/metasequoiaime/MSIME-Engine/pull/40) 的置顶动作已合入 `9f8df0ee`。[Engine #41](https://github.com/metasequoiaime/MSIME-Engine/pull/41) 增加删除动作并把工作词库删除与日志写入放进同一事务，已基于 #40 更新至 `656c020`。该组合本地 14 项 CTest 与上述消费端预检通过，包含先置顶再删除的回放回归；新组合原生 CI 仍待完成，旧提交绿灯不替代它。Windows 尚未消费这两项公共动作，不计作平台迁移完成。
 
 这些改动保持既有数据 Release 与摘要，尚未完成完整资源包和用户数据代际生命周期接入。Apple 引导页 XCTest 不证明实际宿主中的第三方键盘交互，Windows PR CI 不替代安装后 uiAccess 与原生焦点验证。是否随产品发布还需按实际 Release 来源另行核对。
 
