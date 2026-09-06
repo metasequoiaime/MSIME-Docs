@@ -6,9 +6,9 @@
 
 ## 所有维护仓库的共同检查
 
-- `Repository quality` 在 PR、main push、合并队列和手动运行时使用 actionlint 检查工作流及嵌入 Shell。ShellCheck 的 warning/error 阻断合并，风格建议不作为门禁。
+- `Repository quality` 在 PR、`develop` 与 `main` 的 push、合并队列和手动运行时使用 actionlint 检查工作流及嵌入 Shell。ShellCheck 的 warning/error 阻断合并，风格建议不作为门禁。
 - PR 的 Dependency review 拒绝新增 high/critical 已知依赖漏洞；它依赖 GitHub dependency graph，不能替代原生库构建测试。
-- `CodeQL` 在 PR、main push 和每周定时扫描实际语言及 Actions。C/C++ 使用源码分析；Apple 的 Swift 通过未签名 iOS 模拟器编译提取。C/C++ 源码分析不能替代三平台编译或发现所有宏配置下的问题。
+- `CodeQL` 在 PR、`develop` 与 `main` 的 push 和每周定时扫描实际语言及 Actions。C/C++ 使用源码分析；Apple 的 Swift 通过未签名 iOS 模拟器编译提取。C/C++ 源码分析不能替代三平台编译或发现所有宏配置下的问题。
 - Actions 使用完整提交 SHA；Dependabot 通过 PR 更新。依赖更新须通过相同的构建测试，不能仅凭机器人身份绕过门禁。
 - CI 默认只读、使用托管 runner，设定超时并取消过时的同事件运行。发布流程按其实际用途单独保留写权限。
 
@@ -36,11 +36,21 @@
 
 语料仓的 CI 不下载完整语料或训练 KenLM；皮肤测试不安装到维护者的真实用户目录。原生 IME 焦点、跨 DPI、系统授权和签名安装仍需要发布前实际环境验证。
 
+## 分支模型下的 CI
+
+MSIME-Engine、MSIME-Windows、MSIME-Apple、MSIME-Linux 的默认分支是 `develop`，`main` 是发布分支，完整规则见[组织 AGENTS.md 的分支模型](https://github.com/metasequoiaime/.github/blob/main/AGENTS.md#分支模型)。这对 CI 的含义：
+
+- 功能 CI、CodeQL 和质量检查监听 `develop` 和 `main` 两条分支的 push，PR 触发不按分支过滤，因此提到 `develop` 的 PR 与从前提到 `main` 时跑的是同一组检查。
+- `release.yml` 仍然只监听 `main` 的 push。日常合并进 `develop` 不消耗签名额度，也不产生版本号。
+- 每个代码仓有一个 `Branch guard` 工作流，在 PR 的 base 是 `main` 时检查 head：只放行 `develop`、`release/*` 和 `release-please--branches--main--*`。它是 required check 而不是 ruleset 规则，因为 ruleset 能保护 base 分支，但说不了哪些 head 可以指向它。
+- MSIME-Docs、MSIME-Web 和 .github 没有发布产物，仍然只用 `main`，它们的工作流不需要 `develop` 触发，也不需要 `Branch guard`。
+- 健康审计按默认分支查询工作流的运行记录，因此 `release.yml` 在 `tools/health-policy.json` 里写成 `{"branch": "main", "cadence": null}`。不声明的话它在 `develop` 上一条运行都没有，会被报成从未运行过的工作流，而发布路径恰恰是最不该失去监控的那条。
+
 ## 发布与仓库设置
 
-Windows 按产品仓库当前策略自动发布：版本 PR 经过 CI 后自动合并，再构建、签名和发布；`workflow_dispatch` 用于修复已有 draft。签名成本与发布节奏由产品仓库的[发布说明](https://github.com/metasequoiaime/MSIME-Windows/blob/main/docs/product-release.md)说明。CI 门禁改动不重定义现有 release-please 版本方案、draft 校验、产品锁或 Cloudflare Pages 集成。
+Windows 按产品仓库当前策略自动发布：把 `develop` 合进 `main` 之后，版本 PR 经过 CI 自动合并，再构建、签名和发布；`workflow_dispatch` 用于修复已有 draft。签名成本与发布节奏由产品仓库的[发布说明](https://github.com/metasequoiaime/MSIME-Windows/blob/develop/docs/product-release.md)说明。CI 门禁改动不重定义现有 release-please 版本方案、draft 校验、产品锁或 Cloudflare Pages 集成。
 
-新检查首次运行通过后再加入分支 ruleset 的 required checks，使用 GitHub 实际显示的检查名；不能把没有运行过或会被路径过滤永久跳过的任务设为必需。main 应禁止强推和删除，并要求 PR 及通过检查；维护者的既有 bypass 规则需保留。
+新检查首次运行通过后再加入分支 ruleset 的 required checks，使用 GitHub 实际显示的检查名；不能把没有运行过或会被路径过滤永久跳过的任务设为必需。`main` 和 `develop` 都应禁止强推和删除，并要求 PR 及通过检查；四个代码仓的 ruleset 因此显式列出这两条分支，不再写成 `~DEFAULT_BRANCH`——默认分支改成 `develop` 之后，那个占位符会把 `main` 漏在保护之外。维护者的既有 bypass 规则需保留。
 
 维护者应启用 dependency graph、Dependabot alerts/security updates、secret scanning 和 push protection。工作流文件无法代替这些 GitHub 仓库设置。CodeQL 上传成功及 Settings 的实际状态是启用成功的证据。
 

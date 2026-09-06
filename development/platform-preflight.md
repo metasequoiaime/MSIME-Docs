@@ -8,7 +8,7 @@
 python3 .github/scripts/check-platform-adoption.py --workspace . --engine-ref cc21e42916cf93ce43051fec474e87eeeba305bf
 ```
 
-macOS Homebrew 依赖可加 `--prefix-path /opt/homebrew`（按本机安装位置设置）。用待接入 Engine 的提交替换 `--engine-ref` 再跑一次，与平台当前 gitlink 的基线比较。脚本读取各平台的 `origin/main`；运行前自行获取最新引用，也可通过 `--platform-ref` 指定两仓共同存在的引用。
+macOS Homebrew 依赖可加 `--prefix-path /opt/homebrew`（按本机安装位置设置）。用待接入 Engine 的提交替换 `--engine-ref` 再跑一次，与平台当前 gitlink 的基线比较。脚本读取各平台的 `origin/develop`；运行前自行获取最新引用，也可通过 `--platform-ref` 指定两仓共同存在的引用。
 
 脚本只读取 Git 对象，忽略工作区未提交内容和脏子模块指针；把 Engine 实际固定的第三方提交和平台测试源码导出到临时目录，保存提交清单与配置、构建、CTest 日志。失败返回非零，目录保留供排障。它不改产品锁、不获取网络数据、不安装输入法。
 
