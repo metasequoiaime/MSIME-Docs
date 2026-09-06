@@ -8,11 +8,11 @@
 
 | 仓库 | 核对的主分支提交 |
 | --- | --- |
-| 组织规范 | [d4bcc027](https://github.com/metasequoiaime/.github/tree/d4bcc027f753cf7054205f6505bab70131d3de85) |
-| Engine | [7d5169d0](https://github.com/metasequoiaime/MSIME-Engine/tree/7d5169d0083cd87e6588b6399602755d0aefde2d) |
-| Windows | [2562026a](https://github.com/metasequoiaime/MSIME-Windows/tree/2562026a2a1c393e387fcd8ccd2dc30024a44463) |
-| Apple | [72e6c652](https://github.com/metasequoiaime/MSIME-Apple/tree/72e6c652cf1f768c14f61210c2a2b50763271caf) |
-| Linux | [c51aa9c5](https://github.com/metasequoiaime/MSIME-Linux/tree/c51aa9c5071484b1a5b3b83836b54bbfa5cec7ef) |
+| 组织规范 | [b9a23bb9](https://github.com/metasequoiaime/.github/tree/b9a23bb91e71e816e07a87c60812fdc55f388153) |
+| Engine | [c63ba774](https://github.com/metasequoiaime/MSIME-Engine/tree/c63ba774ac03c9ff8ba82776d50e97d27fd459a3) |
+| Windows | [41ef263f](https://github.com/metasequoiaime/MSIME-Windows/tree/41ef263f3c2c1ef107f6df6be616df66c3ceba7e) |
+| Apple | [b1c6e651](https://github.com/metasequoiaime/MSIME-Apple/tree/b1c6e651929c0b8d99f03b9fb498ce37033e4854) |
+| Linux | [c746385a](https://github.com/metasequoiaime/MSIME-Linux/tree/c746385a35a892a544684e6db53ea48155ba898d) |
 
 ## 已合入的接入状态
 
@@ -31,11 +31,11 @@
 
 核对入口：各平台 `product-lock.json`、`vendor/MetasequoiaImeEngine` gitlink、根 `CMakeLists.txt`（Windows 为 `server/CMakeLists.txt`），以及 Windows `server/src/session/`、Apple `shared/apple-bridge/` 与 `platforms/macos/src/MetasequoiaInputController.mm`、Linux `src/InputController.*`。iOS 移动产品见 `platforms/ios/scripts/prepare_dictionary.py`。
 
-## 在途生产者与兼容风险
+## 已合入生产者与兼容风险
 
-[Engine #34](https://github.com/metasequoiaime/MSIME-Engine/pull/34) 在核对时仍开放，最新提交 `2c8fdea6c72aad619e2bedcd7d445052eb1648f1` 提供 `Session`、`RuntimePaths`、会话隔离和完整资源包。它属于待合入能力，不能在组织规范中写成已被三端采用。
+[Engine #34](https://github.com/metasequoiaime/MSIME-Engine/pull/34) 已合入主分支 `c63ba774ac03c9ff8ba82776d50e97d27fd459a3`，提供 `Session`、`RuntimePaths`、会话隔离和完整资源包构建能力。三端主分支仍固定旧引擎，因此生产者已合入不等于产品已接入。
 
-前一提交 `e31d726e` 的[Linux ASan/UBSan 检查](https://github.com/metasequoiaime/MSIME-Engine/actions/runs/34004189681/job/101408326006)失败于 `data_path` 的词典缓冲区泄漏。[Google-PinyinIME-Rev #4](https://github.com/metasequoiaime/Google-PinyinIME-Rev/pull/4) 随后已合入，Engine `2c8fdea6` 更新了固定版本，其[Linux 内存检查已通过](https://github.com/metasequoiaime/MSIME-Engine/actions/runs/34005092776/job/101410700125)。Engine 最终提交仍需完成全部检查并合入，才能成为平台的正式依赖。旧提交的绿勾和本地脏子模块不构成完成证据。
+历史提交 `e31d726e` 的[Linux ASan/UBSan 检查](https://github.com/metasequoiaime/MSIME-Engine/actions/runs/34004189681/job/101408326006)失败于 `data_path` 的词典缓冲区泄漏。[Google-PinyinIME-Rev #4](https://github.com/metasequoiaime/Google-PinyinIME-Rev/pull/4) 随后已合入，Engine `2c8fdea6` 更新了固定版本，其[Linux 内存检查通过](https://github.com/metasequoiaime/MSIME-Engine/actions/runs/34005092776/job/101410700125)，修复随 #34 合入。以下保留预检历史，用于说明消费者必须同步修改的原因。
 
 直接更新 Engine 还存在这些接入差距：
 
@@ -60,6 +60,18 @@
 失败由原有控制器测试报告，验证了辅助码实例配置需要随 Engine 更新同步迁移。此结果覆盖可移植 C++ 行为，不是 Linux IBus 原生实测，也不证明 iOS 模拟器、设备或安装已经通过。
 
 使用组织仓库的[接入预检脚本](https://github.com/metasequoiaime/.github/blob/main/scripts/check-platform-adoption.py)重复比较，命令与范围见其 [README](https://github.com/metasequoiaime/.github#engine-接入预检)。脚本保留每次运行的 `evidence.json`、构建与测试日志，失败返回非零；平台原生 CI 仍是后续验收的一部分。
+
+## 平台迁移分支（尚未合入或发布）
+
+2026-09-06 以下草稿 PR 均固定已合入的 Engine `c63ba774`，保持原有 `dict-v1.0.0` 来源与摘要。其测试证据不替代上面的主分支状态。
+
+| 平台 / 评审 | 实际改动 | 验证与尚未覆盖范围 |
+| --- | --- | --- |
+| [Linux #84](https://github.com/metasequoiaime/MSIME-Linux/pull/84)，`1d36ea0` | 对活动会话配置辅助码；取消每次按键重载；仍使用兼容 InputSession | 本地可移植 CTest 25 项通过；[Ubuntu 24.04/26.04、amd64/arm64 CI](https://github.com/metasequoiaime/MSIME-Linux/actions/runs/34006048460) 四组均通过；未声称桌面宿主人工交互已验证 |
+| [Apple #272](https://github.com/metasequoiaime/MSIME-Apple/pull/272)，`dee7659` | iOS bridge 使用 Session 动作与快照；macOS 仍用 InputSession，筛选和提示使用控制器所属码表 | 本地通用 macOS 构建、签名检查和 38 项 CTest 通过；iOS 模拟器构建及引导页 XCTest 通过；[原生 CI](https://github.com/metasequoiaime/MSIME-Apple/actions/runs/34006179512) arm64/iOS 已通过，x86_64 核对时仍运行；真实设备内存和键盘宿主交互待验证 |
+| [Windows #178](https://github.com/metasequoiaime/MSIME-Windows/pull/178)，`0c63c06` | 对活动会话配置辅助码，候选提示读取该适配器持有码表；缓存未变化方案；同步产品锁 | 契约同步、产品锁校验和 18 项 Python 回归通过；[Windows 原生 CI](https://github.com/metasequoiaime/MSIME-Windows/actions/runs/34006530164) 运行中，Server 真实词库回归与 TSF/管道验证尚待结果 |
+
+三个 PR 均未完成新的资源包和用户数据代际生命周期接入。Apple 的引导页 XCTest 不能证明第三方键盘在实际宿主中的交互；Windows 的 PR CI 也不代表签名、安装与 uiAccess 验证。后续应在同一最终提交补齐证据。
 
 ## 推进顺序和完成证据
 
