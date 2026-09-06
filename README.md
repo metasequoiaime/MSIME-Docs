@@ -1,6 +1,6 @@
-# Metasequoia IME(水杉输入法)
+# 水杉输入法文档
 
-水杉输入法起初是一个 Windows 上的纯 TSF 输入法，现在各平台前端共用同一套 C++ 输入引擎：Windows 公开内测中，macOS 已发布，Linux（IBus）已有发布包，iOS 前端正在开发中。
+本仓是用户指南、产品架构和跨仓开发维护说明的统一入口。项目介绍、社区政策与参与方向见[组织主页](https://github.com/metasequoiaime)及[组织仓库](https://github.com/metasequoiaime/.github)。产品可用性以各平台 Release 和指南为准。
 
 ## 用户文档
 
@@ -15,77 +15,35 @@ Windows 指南是官网对应正文的唯一来源。修改用户说明请在本
 
 仓库边界与数据来源见[公共仓库与平台架构](architecture/repositories.md)。
 
+## 开发与维护
+
+| 说明 | 阅读入口 |
+| --- | --- |
+| 仓库职责、输入链路、数据来源与问题归属 | [公共仓库与平台架构](architecture/repositories.md) |
+| 平台消费版本与迁移验收 | [平台接入矩阵](architecture/platform-adoption.md) |
+| CI 检查、健康审计与排障 | [持续集成与自动维护](development/continuous-integration.md) |
+| 固定提交的跨平台兼容预检 | [Engine 接入预检](development/platform-preflight.md) |
+| 过往实施、核对依据与界面示例 | [历史记录](archive/README.md) |
+
 ## 开源代码
 
-平台前端：
-
-- Windows TSF 端: <https://github.com/metasequoiaime/MSIME-Windows>
-- Apple 平台（macOS / iOS）: <https://github.com/metasequoiaime/MSIME-Apple>
-- Linux（IBus）: <https://github.com/metasequoiaime/MSIME-Linux>
-
-引擎与数据：
-
-- 输入法引擎: <https://github.com/metasequoiaime/MSIME-Engine>
-- Server 端: <https://github.com/metasequoiaime/MSIME-Windows/tree/main/server>
-- 输入法词典与构建器: <https://github.com/metasequoiaime/MSIME-Engine/tree/main/dictionary>
-- 自定义词典包: <https://github.com/metasequoiaime/MSIME-Engine/tree/main/dictionary/custom>
-- 辅助码: <https://github.com/metasequoiaime/MSIME-Engine/tree/main/helpcode>
-- n-gram 拼音联想算法: <https://github.com/metasequoiaime/Metasequoia-n-gram>
-- 原安卓谷歌拼音输入法引擎: <https://github.com/metasequoiaime/Google-PinyinIME-Rev>
-
-界面与工具：
-
-- 原生 GUI 框架: <https://github.com/metasequoiaime/MSIME-Windows/tree/main/ui>
-- UI 界面（WebView2 资源）: <https://github.com/metasequoiaime/MSIME-Windows/tree/main/ui-html>
-- 公共语音模块: <https://github.com/metasequoiaime/MSIME-Engine/tree/main/voice>
-- 输入法日志: <https://github.com/metasequoiaime/MSIME-Windows/tree/main/log>
-- 安装器: <https://github.com/metasequoiaime/MSIME-Windows/tree/main/installer>
-- 皮肤示例: <https://github.com/metasequoiaime/metasequoia-ime-skin-example>
-
-## 截图
-
-以下为历史界面示例，实际外观随版本和皮肤变化。
-
-![Windows 输入法界面示例](https://i.imgur.com/THBuxl3.png)
-
-![Windows 候选窗口示例](https://i.imgur.com/rOCyAic.png)
-
-![Windows 工具界面示例](https://i.imgur.com/ayArNvd.png)
-
-双拼初学者可以使用以下这个带有键位提示的皮肤：
-
-![带双拼键位提示的皮肤示例](https://i.imgur.com/Sq1OKRM.png)
-
-## 特性
-
-共享引擎提供本地拼音、双拼、五笔查询、候选选择、辅助码与词频学习；平台前端负责原生输入交互。日语、快捷模式、联网候选和语音等功能的入口与随包数据因平台而异，详见各平台指南。
-
-Windows 提供 TSF 输入、候选窗口、工具栏和设置页面；macOS 提供原生候选与设置、本地或云端语音；Linux 提供 IBus 集成、GTK 设置和独立语音命令。本地输入不要求配置云服务；联网功能的默认开关和数据去向请分别查看指南。
-
-## 路线图
-
-已发布功能与变更以各平台 Release 为准；开发计划在对应仓库 Issues 中讨论，不在文档中承诺未经确认的交付日期。可参与 Windows 兼容性、Apple/iOS 前端、Linux 桌面集成、公共引擎和词库维护，入口见下方贡献说明。
+代码与模块入口集中在[架构说明](architecture/repositories.md)，本页不维护第二份仓库清单。
 
 ## 手动构建
 
-本仓只有 Markdown 文档，无需编译。应用构建请使用对应实现仓的当前说明：
+本仓只有文档。模块 API、依赖安装、构建与测试命令以各实现仓库的 README 和工作流为准；跨仓预检见[开发与维护](#开发与维护)。
 
-- [Windows 构建入口](https://github.com/metasequoiaime/MSIME-Windows#readme)
-- [Apple 构建与测试](https://github.com/metasequoiaime/MSIME-Apple#readme)
-- [Linux 构建与测试](https://github.com/metasequoiaime/MSIME-Linux#readme)
-- [公共引擎与数据构建](https://github.com/metasequoiaime/MSIME-Engine#readme)
+## 截图
+
+[历史界面示例](archive/interface-examples.md)已归档；当前使用方式请看对应平台指南。
 
 ## 贡献
 
-文档结构、核对方法和官网同步流程见[文档贡献指南](CONTRIBUTING.md)。
-
-欢迎参与。方向不限于写代码——整理词库、补文档、做本地化、测兼容性、录教程同样算贡献。可参与的方向按类别列在[招募开源开发者](https://github.com/metasequoiaime/.github/blob/main/RECRUITING.md)，通用约定见[贡献指南](https://github.com/metasequoiaime/.github/blob/main/CONTRIBUTING.md)。
-
-开源的一个理由是隐私：输入法能看到用户输入的一切，这件事不该靠承诺保证，而该能被任何人直接读代码检查。
+文档修改遵循[本仓贡献指南](CONTRIBUTING.md)。通用贡献流程、安全策略、治理与招募统一在[组织仓库](https://github.com/metasequoiaime/.github)维护。
 
 ## 感谢
 
-- 开源签名证书(50 欧元/年的 Sign in Cloud 版本): <https://www.certum.eu/en/>
+历史签名证书支持：[Certum](https://www.certum.eu/en/)。
 
 ## 许可协议
 

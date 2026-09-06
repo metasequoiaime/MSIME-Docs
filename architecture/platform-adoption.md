@@ -59,7 +59,7 @@
 
 失败由原有控制器测试报告，验证了辅助码实例配置需要随 Engine 更新同步迁移。此结果覆盖可移植 C++ 行为，不是 Linux IBus 原生实测，也不证明 iOS 模拟器、设备或安装已经通过。
 
-使用组织仓库的[接入预检脚本](https://github.com/metasequoiaime/.github/blob/main/scripts/check-platform-adoption.py)重复比较，命令与范围见其 [README](https://github.com/metasequoiaime/.github#engine-接入预检)。脚本保留每次运行的 `evidence.json`、构建与测试日志，失败返回非零；平台原生 CI 仍是后续验收的一部分。
+使用组织仓库的[接入预检脚本](https://github.com/metasequoiaime/.github/blob/main/scripts/check-platform-adoption.py)重复比较，命令与范围见[接入预检说明](../development/platform-preflight.md)。脚本保留每次运行的 `evidence.json`、构建与测试日志，失败返回非零；平台原生 CI 仍是后续验收的一部分。
 
 ## 消费者 PR 与实际验证
 
