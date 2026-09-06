@@ -42,6 +42,7 @@ MSIME-Engine、MSIME-Windows、MSIME-Apple、MSIME-Linux 的默认分支是 `dev
 
 - 功能 CI、CodeQL 和质量检查监听 `develop` 和 `main` 两条分支的 push，PR 触发不按分支过滤，因此提到 `develop` 的 PR 与从前提到 `main` 时跑的是同一组检查。
 - `release.yml` 仍然只监听 `main` 的 push。日常合并进 `develop` 不消耗签名额度，也不产生版本号。
+- `release.yml` 里每一处 release-please 调用都显式写 `target-branch: main`。这个动作的默认值是仓库默认分支，改成 `develop` 之后它会把版本 PR、CHANGELOG 和 tag 全写到 `develop`，而流水线按名字等待的 `release-please--branches--main--*` 分支根本不会出现——没有报错，发布链只是停住。
 - 每个代码仓有一个 `Branch guard` 工作流，在 PR 的 base 是 `main` 时检查 head：只放行 `develop`、`release/*` 和 `release-please--branches--main--*`。它是 required check 而不是 ruleset 规则，因为 ruleset 能保护 base 分支，但说不了哪些 head 可以指向它。
 - MSIME-Docs、MSIME-Web 和 .github 没有发布产物，仍然只用 `main`，它们的工作流不需要 `develop` 触发，也不需要 `Branch guard`。
 - 健康审计按默认分支查询工作流的运行记录，因此 `release.yml` 在 `tools/health-policy.json` 里写成 `{"branch": "main", "cadence": null}`。不声明的话它在 `develop` 上一条运行都没有，会被报成从未运行过的工作流，而发布路径恰恰是最不该失去监控的那条。
