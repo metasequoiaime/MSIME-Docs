@@ -2,6 +2,8 @@
 
 公共部分已合并：Engine、Dict、CustomDict、HelpCode 和 VoiceInput 统一到 MSIME-Engine。Windows 组件统一到 MSIME-Windows 的目录中；Windows、Linux、Apple 保留各自的平台边界；官网、用户文档、皮肤示例、pinyin_cpp、pinyin_python 和 n-gram 等仓库保持独立。
 
+公共 API、资源包与各平台实际固定版本的接入状态，以及后续迁移的验收条件，见[平台接入矩阵](platform-adoption.md)。矩阵区分主分支源码、在途实现和产品发布。
+
 | 位置 | 当前职责 |
 | --- | --- |
 | MSIME-Engine 的 core、schemes 等目录 | 输入会话、候选、查询和学习 |
