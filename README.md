@@ -1,5 +1,12 @@
 # Metasequoia IME(水杉输入法)
 
+<!-- badges:start -->
+[![CI](https://img.shields.io/github/actions/workflow/status/metasequoiaime/MSIME-Docs/docs.yml?branch=main&label=CI)](https://github.com/metasequoiaime/MSIME-Docs/actions/workflows/docs.yml)
+[![CodeQL](https://img.shields.io/github/actions/workflow/status/metasequoiaime/MSIME-Docs/codeql.yml?branch=main&label=CodeQL)](https://github.com/metasequoiaime/MSIME-Docs/actions/workflows/codeql.yml)
+[![License](https://img.shields.io/github/license/metasequoiaime/MSIME-Docs)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/metasequoiaime/MSIME-Docs?style=flat)](https://github.com/metasequoiaime/MSIME-Docs/stargazers)
+<!-- badges:end -->
+
 水杉输入法起初是一个 Windows 上的纯 TSF 输入法，现在各平台前端共用同一套 C++ 输入引擎：Windows 公开内测中，macOS 已发布，Linux（IBus）已有发布包，iOS 前端正在开发中。
 
 ## 用户文档
@@ -46,15 +53,15 @@ Windows 指南是官网对应正文的唯一来源。修改用户说明请在本
 
 以下为历史界面示例，实际外观随版本和皮肤变化。
 
-![Windows 输入法界面示例](https://i.imgur.com/THBuxl3.png)
+![Windows 输入法界面示例](images/candidate-window.png)
 
-![Windows 候选窗口示例](https://i.imgur.com/rOCyAic.png)
+![Windows 候选窗口示例](images/settings.png)
 
-![Windows 工具界面示例](https://i.imgur.com/ayArNvd.png)
+![Windows 工具界面示例](images/skins.png)
 
 双拼初学者可以使用以下这个带有键位提示的皮肤：
 
-![带双拼键位提示的皮肤示例](https://i.imgur.com/Sq1OKRM.png)
+![带双拼键位提示的皮肤示例](images/toolbar.png)
 
 ## 特性
 
@@ -90,3 +97,11 @@ Windows 提供 TSF 输入、候选窗口、工具栏和设置页面；macOS 提�
 ## 许可协议
 
 GPL-3.0.
+
+<!-- star-history:start -->
+## Star History
+
+<a href="https://star-history.com/#metasequoiaime/MSIME-Docs&Date">
+  <img src="https://api.star-history.com/svg?repos=metasequoiaime/MSIME-Docs&type=Date" alt="Star History Chart" width="600">
+</a>
+<!-- star-history:end -->
