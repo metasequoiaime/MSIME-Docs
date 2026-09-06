@@ -1,5 +1,12 @@
 # 水杉输入法文档
 
+<!-- badges:start -->
+[![CI](https://img.shields.io/github/actions/workflow/status/metasequoiaime/MSIME-Docs/docs.yml?branch=main&label=CI)](https://github.com/metasequoiaime/MSIME-Docs/actions/workflows/docs.yml)
+[![CodeQL](https://img.shields.io/github/actions/workflow/status/metasequoiaime/MSIME-Docs/codeql.yml?branch=main&label=CodeQL)](https://github.com/metasequoiaime/MSIME-Docs/actions/workflows/codeql.yml)
+[![License](https://img.shields.io/github/license/metasequoiaime/MSIME-Docs)](LICENSE)
+[![Stars](https://img.shields.io/github/stars/metasequoiaime/MSIME-Docs?style=flat)](https://github.com/metasequoiaime/MSIME-Docs/stargazers)
+<!-- badges:end -->
+
 本仓是用户指南、产品架构和跨仓开发维护说明的统一入口。项目介绍、社区政策与参与方向见[组织主页](https://github.com/metasequoiaime)及[组织仓库](https://github.com/metasequoiaime/.github)。产品可用性以各平台 Release 和指南为准。
 
 ## 用户文档
@@ -48,3 +55,11 @@ Windows 指南是官网对应正文的唯一来源。修改用户说明请在本
 ## 许可协议
 
 GPL-3.0.
+
+<!-- star-history:start -->
+## Star History
+
+<a href="https://star-history.com/#metasequoiaime/MSIME-Docs&Date">
+  <img src="https://api.star-history.com/svg?repos=metasequoiaime/MSIME-Docs&type=Date" alt="Star History Chart" width="600">
+</a>
+<!-- star-history:end -->
