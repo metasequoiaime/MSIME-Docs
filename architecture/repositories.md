@@ -6,7 +6,7 @@
 
 | 位置 | 当前职责 |
 | --- | --- |
-| MSIME-Engine 的 core、schemes 等目录 | 输入会话、候选、查询和学习 |
+| [MSIME-Engine](https://github.com/metasequoiaime/MSIME-Engine) 的 core、schemes 等目录 | 输入会话、候选、查询和学习 |
 | Engine/dictionary | 桌面和移动词库构建，根 build_profile.py 是公开入口 |
 | Engine/dictionary/custom | 可验证的自定义词典与翻译包 |
 | Engine/helpcode | 辅助码数据与来源说明 |
@@ -15,7 +15,11 @@
 | MSIME-Apple、MSIME-Linux | 原生权限、界面、焦点、按键与文本提交 |
 | MSIME-Windows 的 windows/、server/、ui/、ui-html/、installer/ | Windows 产品源码，统一仓库与 CI；DLL/Server 仍隔进程通信，GUI 保持通用库边界 |
 | MSIME-Windows 的 log/、experiments/tsf-edit-control/ | 日志库与 TSF 编辑控件实验 |
-| MSIME-Docs、MSIME-Web | 用户文档正文、官网呈现与下载导航 |
+| MSIME-Docs | 用户指南、产品架构、跨仓开发维护说明与历史归档 |
+| MSIME-Web | 官网呈现、Docs 固定版本渲染与下载元数据 |
+| .github | 组织政策、公共配置、执行规则和跨仓自动化 |
+
+独立实验与资源入口：[pinyin_cpp](https://github.com/metasequoiaime/pinyin_cpp)、[pinyin_python](https://github.com/metasequoiaime/pinyin_python)、[n-gram](https://github.com/metasequoiaime/Metasequoia-n-gram)、[Google-PinyinIME-Rev](https://github.com/metasequoiaime/Google-PinyinIME-Rev) 和[皮肤示例](https://github.com/metasequoiaime/metasequoia-ime-skin-example)。
 
 平台通过固定 Engine 提交消费代码和辅助码。语音模块按需构建，普通输入引擎不会因合仓而强制加载录音设备、网络服务或 Whisper 模型。macOS 的菜单与快捷键调用公共库，Windows Server 的录音采集也使用同一实现；服务商配置和原生交互由平台维护。
 
@@ -30,7 +34,9 @@
 3. 平台前端显示候选，并通过各自的输入框架提交文本：Windows 使用 TSF，macOS 使用 InputMethodKit，Linux 使用 IBus；iOS 使用键盘扩展适配层。
 4. 在线候选或语音异步返回时，平台与会话层需要确认请求仍属于当前输入会话，避免把旧结果写入新的输入位置。
 
-Windows 的 TSF DLL 加载到宿主应用中，Server 在独立进程中调度引擎和窗口，两者通过 Engine 定义的版本化管道协议通信。`ui/` 提供通用 GUI 能力，`ui-html/` 提供页面；业务动作和配置持久化由 Server 处理。合仓不改变这些运行时边界。
+组织执行约束见 [AGENTS.md](https://github.com/metasequoiaime/.github/blob/main/AGENTS.md)，CI 操作见[持续维护说明](../development/continuous-integration.md)。
+
+Windows 的 TSF DLL 加载到宿主应用中，Server 在独立进程中调度引擎和窗口，两者通过 Engine 定义的版本化管道协议通信。`ui/` 提供通用 GUI 能力，不依赖输入法业务、Server 全局状态或词库；原生窗口由 Server 拥有，`ui-html/` 提供页面；业务动作和配置持久化由 Server 处理。合仓不改变这些运行时边界。DLL 的静态 CRT 与 Server 的动态 CRT 构建树保持独立。
 
 平台共享引擎不代表用户功能完全相同：是否携带额外词库、是否链接语音模块、如何录音与上屏、设置哪些入口，都由平台产品决定。例如 macOS 语音可选本地 Whisper，Linux 当前通过独立命令输出转写文本，Windows 使用原生菜单与录音快捷键。
 
@@ -56,9 +62,15 @@ Windows 的 TSF DLL 加载到宿主应用中，Server 在独立进程中调度�
 
 ## 问题应提交到哪里
 
-- 安装、切换输入源、焦点、按键与上屏问题：对应平台仓库。
-- 查询、候选顺序、词条与辅助码问题：Engine；不能判断时先提交到遇到问题的平台仓库。
-- 用户说明缺失或过时：Docs。
-- 官网布局、导航、下载链接或渲染问题：Web。
+| 现象 | 提交位置 |
+| --- | --- |
+| 某个宿主中的按键、光标、候选窗、焦点、安装或上屏问题 | 对应 [Windows](https://github.com/metasequoiaime/MSIME-Windows)、[Apple](https://github.com/metasequoiaime/MSIME-Apple) 或 [Linux](https://github.com/metasequoiaime/MSIME-Linux) 平台仓库 |
+| 候选顺序、组词、联想或纠错问题 | [Engine](https://github.com/metasequoiaime/MSIME-Engine) |
+| 词条、拼音、权重或词库构建问题 | [Engine/dictionary](https://github.com/metasequoiaime/MSIME-Engine/tree/main/dictionary) |
+| 辅助码筛选或数据问题 | [Engine/helpcode](https://github.com/metasequoiaime/MSIME-Engine/tree/main/helpcode) |
+| Windows 设置页面、托盘、工具栏 | [Windows/server](https://github.com/metasequoiaime/MSIME-Windows/tree/main/server) |
+| Windows 安装、升级与卸载 | [Windows/installer](https://github.com/metasequoiaime/MSIME-Windows/tree/main/installer) |
+| 用户与开发说明缺失或过时 | [Docs](https://github.com/metasequoiaime/MSIME-Docs) |
+| 官网导航、下载链接或渲染 | [Web](https://github.com/metasequoiaime/MSIME-Web) |
 
-用户反馈时记录平台与产品版本、宿主应用和最小复现步骤；开发者再核对相应产品锁定的 Engine 和数据版本。不要仅用 Engine 当前主分支的结果推断旧安装包行为。
+不能判断时先提交到遇到问题的平台仓库，维护者再转移。反馈记录平台与产品版本、宿主应用和最小复现步骤；开发者核对产品锁定的 Engine 和数据版本，不用主分支结果推断旧安装包行为。提交流程与隐私要求遵循[组织贡献指南](https://github.com/metasequoiaime/.github/blob/main/CONTRIBUTING.md)。

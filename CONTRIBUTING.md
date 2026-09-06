@@ -1,6 +1,6 @@
 # 维护文档
 
-本仓维护用户指南和跨平台产品架构。通用流程遵循[组织贡献指南](https://github.com/metasequoiaime/.github/blob/main/CONTRIBUTING.md)，仓库边界见 [AGENTS.md](AGENTS.md)。
+本仓维护用户指南、跨平台产品架构和跨仓开发维护说明。通用流程遵循[组织贡献指南](https://github.com/metasequoiaime/.github/blob/main/CONTRIBUTING.md)，仓库边界见 [AGENTS.md](AGENTS.md)。
 
 ## 内容放在哪里
 
@@ -10,7 +10,10 @@
 | macOS 语音配置与权限 | `guides/macos-voice.md`，由 macOS 指南链接 |
 | 公共职责、输入链路与数据来源 | `architecture/repositories.md` |
 | 平台固定版本、公共能力接入与迁移验收 | `architecture/platform-adoption.md` |
-| 阅读入口、平台范围、开发入口 | `README.md` |
+| CI 使用、组织健康审计、跨平台接入预检 | `development/`；执行脚本仍在 `.github` |
+| 历史实施、内容核对和界面记录 | `archive/`，必须标明日期与适用范围 |
+| 阅读入口 | `README.md`，链接正文而不复制平台状态或代码清单 |
+| 组织治理、贡献、安全与执行规则 | `.github`；本文只补充文档专属要求 |
 | 构建命令、API 与模块测试 | 对应实现仓库 |
 | 网站路由、页面样式、下载元数据 | MSIME-Web |
 
@@ -31,15 +34,4 @@ Windows 正文还会在官网渲染。Web 当前为二、三级标题生成目�
 
 Docs 合并后，再让 Web 的 `vendor/MSIME-Docs` 指向已合并提交并验证页面；不要在 Web 复制一份可独立编辑的指南。
 
-## 本轮内容核对来源
-
-2026-09-06 补全文档时核对了以下提交。它们是内容依据，不代表安装包均包含这些提交；平台指南仍以用户安装版本的 Release 为准。
-
-| 仓库与提交 | 主要核对位置 |
-| --- | --- |
-| [Windows f7b3a66](https://github.com/metasequoiaime/MSIME-Windows/tree/f7b3a66b8bf1f268b165dc539f7c3a6f2381facb) | README、`ui-html/webview2/settings/ime-settings/src/partials/`、`server/src/settings/dictionary_manager.cpp`、安装说明 |
-| [Apple 9c1ac5e](https://github.com/metasequoiaime/MSIME-Apple/tree/9c1ac5e0d6054f06c97fa461d9378cc0a440bde7) | README、PRIVACY、macOS 卸载脚本 |
-| [Linux 484d24e](https://github.com/metasequoiaime/MSIME-Linux/tree/484d24e504c48e920445a3b43acd92814ed54672) | README、PRIVACY、`src/VoiceInputCli.cpp`、配置实现 |
-| [Web 1ddeeef](https://github.com/metasequoiaime/MSIME-Web/tree/1ddeeefad32a0113e387bbc530edbb2a89ce0ad1) | README、`src/docs.ts`、`src/content-page.ts` |
-
-架构依据同时包括[组织约定](https://github.com/metasequoiaime/.github/blob/main/AGENTS.md)。后续功能变更应更新对应正文及受影响的核对依据。
+历史内容核对依据见[归档目录](archive/README.md)。迁移说明时更新引用，旧公开地址保留简短迁移入口；正文只在目标位置维护。
