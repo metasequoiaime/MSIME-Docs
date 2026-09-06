@@ -33,9 +33,9 @@
 
 ## 在途生产者与兼容风险
 
-[Engine #34](https://github.com/metasequoiaime/MSIME-Engine/pull/34) 在核对时仍开放，提交 `e31d726ed9828f5e1e05fa60c3b36c9ee3769aa2` 提供 `Session`、`RuntimePaths`、会话隔离和完整资源包。它属于待合入能力，不能在组织规范中写成已被三端采用。
+[Engine #34](https://github.com/metasequoiaime/MSIME-Engine/pull/34) 在核对时仍开放，最新提交 `2c8fdea6c72aad619e2bedcd7d445052eb1648f1` 提供 `Session`、`RuntimePaths`、会话隔离和完整资源包。它属于待合入能力，不能在组织规范中写成已被三端采用。
 
-该提交的[Linux ASan/UBSan 检查](https://github.com/metasequoiaime/MSIME-Engine/actions/runs/34004189681/job/101408326006)失败于 `data_path` 的词典缓冲区泄漏；[Google-PinyinIME-Rev #4](https://github.com/metasequoiaime/Google-PinyinIME-Rev/pull/4) 是在途修复。完成条件是上游修复合入、Engine 更新到已合入提交、最终 Engine 提交的检查通过并合入。旧提交的绿勾和本地脏子模块不构成完成证据。
+前一提交 `e31d726e` 的[Linux ASan/UBSan 检查](https://github.com/metasequoiaime/MSIME-Engine/actions/runs/34004189681/job/101408326006)失败于 `data_path` 的词典缓冲区泄漏。[Google-PinyinIME-Rev #4](https://github.com/metasequoiaime/Google-PinyinIME-Rev/pull/4) 随后已合入，Engine `2c8fdea6` 更新了固定版本，其[Linux 内存检查已通过](https://github.com/metasequoiaime/MSIME-Engine/actions/runs/34005092776/job/101410700125)。Engine 最终提交仍需完成全部检查并合入，才能成为平台的正式依赖。旧提交的绿勾和本地脏子模块不构成完成证据。
 
 直接更新 Engine 还存在这些接入差距：
 
@@ -49,12 +49,13 @@
 
 ## 接入预检实测
 
-2026-09-06 在 macOS / AppleClang 21 上，把上述 Apple 和 Linux 主分支的既有可移植测试与两个 Engine 提交分别编译、运行。源码和第三方子模块均从提交对象导出，不使用工作区的未提交修改。
+2026-09-06 在 macOS / AppleClang 21 上，把上述 Apple 和 Linux 主分支的既有可移植测试与下列 Engine 提交分别编译、运行。源码和第三方子模块均从提交对象导出，不使用工作区的未提交修改。
 
 | Engine 提交 | iOS bridge 回归 | Linux 控制器回归 |
 | --- | --- | --- |
 | 平台当前固定 `cc21e429` | 通过 | 通过 |
 | 待接入 `e31d726e` | 通过 | 失败：`The independent Quanpin helpcode schema was not selected before input.` |
+| 泄漏修复后 `2c8fdea6` | 通过 | 同一辅助码断言失败 |
 
 失败由原有控制器测试报告，验证了辅助码实例配置需要随 Engine 更新同步迁移。此结果覆盖可移植 C++ 行为，不是 Linux IBus 原生实测，也不证明 iOS 模拟器、设备或安装已经通过。
 
