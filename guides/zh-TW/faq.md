@@ -18,11 +18,16 @@
 
 **有臨時處理辦法，修復仍在跟進。** Windows 10、v0.5.4 的回報中，維護者確認 Direct2D 工具列使用了系統未自帶的 `Segoe Fluent Icons` 圖示字型。這與候選漢字的字型不同。
 
-可在“设置 → 外观”把“界面渲染”改為 **WebView2**，儲存後按 `Ctrl + Shift + Alt + T` 退出輸入法服務，再從開始選單啟動水杉輸入法。維護者將此作為臨時緩解辦法。切換渲染方式後需重新啟動才生效。
+可以先補齊圖示字型，再檢查渲染方式：
 
-若要補齊字型，可從微軟官方的 [Segoe Fluent Icons 說明頁](https://learn.microsoft.com/en-us/windows/apps/design/iconography/segoe-fluent-icons-font#how-do-i-get-this-font)進入 Design resources 下載並安裝，再重啟輸入法。Windows 11 自帶此字型；微軟也提示獨立下載版可能缺少較新的圖示，因此安裝字型不保證解決所有圖示缺失。
+1. 開啟微軟的 [Design resources 字型下載頁](https://learn.microsoft.com/en-us/windows/apps/design/downloads/#fonts)，下載 **Segoe Fluent Icons**。
+2. 解壓 `Segoe-Fluent-Icons.zip`，右鍵字型檔案，選擇“安装”。
+3. 安裝完成後按 `Ctrl + Shift + Alt + R` 重啟輸入法服務，再檢查圖示。
+4. 若仍顯示方框，在“设置 → 外观”將“界面渲染”從 **Direct2D（原生）**改為 **WebView2**，儲存後再次重啟服務。
 
-來源：[Windows #232](https://github.com/metasequoiaime/MSIME-Windows/issues/232)，2026-09-08 核對時仍為開放狀態。
+注意：`Ctrl + Shift + Alt + T` 是**退出**服務，不是重啟；誤按後可從開始選單重新啟動水杉輸入法。Windows 11 自帶此字型；微軟說明獨立下載版可能缺少較新的圖示，安裝後仍異常時可嘗試上述 WebView2 方案。
+
+來源：[Windows #232](https://github.com/metasequoiaime/MSIME-Windows/issues/232)、[社群圖文步驟 · Discussion #258](https://github.com/metasequoiaime/MSIME-Windows/discussions/258)、[微軟字型說明](https://learn.microsoft.com/en-us/windows/apps/design/iconography/segoe-fluent-icons-font#how-do-i-get-this-font)。快捷鍵以 [Windows 指南](https://msime.app/zh-TW/docs/windows/#快捷鍵)為準。
 
 ### 候選字視窗太大、字太小，或每頁候選數量不合習慣？
 
@@ -36,11 +41,15 @@
 
 ### 安裝後切換不了輸入法，Server 反覆退出，或設定視窗一閃即關？
 
-先檢查 **Microsoft Visual C++ x64 執行階段**。Server 和設定程式是 64 位元程式，只安裝 x86 版本並不夠。在[微軟官方下載頁](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist)選擇 x64 的 `vc_redist.x64.exe` 安裝；已有安裝可嘗試“修复”，然後重啟 Windows。
+先檢查 **Microsoft Visual C++ x64 執行階段**。Server 和設定程式是 64 位元程式，只安裝 x86 版本並不夠。
+
+1. Windows 10 可在“设置 → 应用 → 应用和功能 → 程序和功能”檢查已安裝的 Microsoft Visual C++ Redistributable 項目，確認是否包含 **x64**。
+2. 開啟[微軟官方下載頁](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist)，選擇 x64 的 `vc_redist.x64.exe`，執行並按提示安裝；已安裝時可嘗試“修复”。
+3. 完成後重啟 Windows，再用 `Win + Space` 切換到水杉輸入法。
 
 仍有問題時，先儲存錯誤提示和事件檢視器記錄。不要先清空使用者資料，否則可能丟失詞條和排查依據。
 
-依據：[Windows 指南 · 安裝後無法使用或設定視窗閃退](https://msime.app/zh-TW/docs/windows/#安裝後無法使用或設定視窗閃退)。
+依據：[Windows 指南 · 安裝後無法使用或設定視窗閃退](https://msime.app/zh-TW/docs/windows/#安裝後無法使用或設定視窗閃退)、[社群圖文排查 · Discussion #258](https://github.com/metasequoiaime/MSIME-Windows/discussions/258)。
 
 ### 安裝好了，但找不到設定入口？
 
@@ -54,9 +63,11 @@
 
 兩種現象應分開排查。**視窗整體空白或不出現**時，先確認 Metasequoia IME Server 正在執行，再檢查 Microsoft Edge WebView2 Runtime，並對照所裝版本的發布說明。**視窗中有候選位置、但字元是方框**時，優先檢查字型。
 
-如果只有某個應用無法顯示或送出文字，先在記事本中對比，回報時寫清應用名稱、版本及是否以管理員身份執行。
+**輸入法能啟動，但點選設定沒有反應**時，缺少或損壞的 WebView2 Runtime 是一種可能原因。可開啟[微軟 WebView2 下載頁](https://developer.microsoft.com/microsoft-edge/webview2/#download)，在 **Evergreen Standalone Installer（常青獨立安裝程式）**下選擇 **x64**，接受許可後下載安裝。安裝完成後重啟 Windows，再嘗試開啟設定；無需為此安裝開發用 SDK。
 
-依據：[Windows 指南 · 更新、備份與故障排查](https://msime.app/zh-TW/docs/windows/#更新備份與故障排查)。
+這是社群討論提供的排查路徑，不代表所有設定打不開的問題都由 WebView2 導致。如果只有某個應用無法顯示或送出文字，先在記事本中對比，回報時寫清應用名稱、版本及是否以管理員身份執行。
+
+依據：[Windows 指南 · 更新、備份與故障排查](https://msime.app/zh-TW/docs/windows/#更新備份與故障排查)、[社群圖文排查 · Discussion #258](https://github.com/metasequoiaime/MSIME-Windows/discussions/258)、[微軟 WebView2 Runtime 說明](https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/distribution#the-evergreen-runtime-distribution-mode)。
 
 ### 設定頁提示找不到 imesettings 的伺服器 IP，應該改 DNS 嗎？
 

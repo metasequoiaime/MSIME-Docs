@@ -1,6 +1,5 @@
 {
   "locale": "zh-Hant-TW",
-  "sourceCommit": "26b18f4a7d7d95743c1770c5c228f0edbca21d3e",
   "files": {
     "windows.md": {
       "source": "guides/windows.md",
@@ -24,8 +23,9 @@
     },
     "faq.md": {
       "source": "guides/faq.md",
-      "sourceSha256": "804da9e1a4a6dc89c4b864d7e02d2264ec1119992606a9bd88557494ad2d44fd",
+      "sourceSha256": "ac9d68b66e1c90f90242d6355c8150d16bda12fa27077128cc7a133d2a8508f8",
       "translation": "guides/zh-TW/faq.md"
     }
-  }
+  },
+  "sourceBaseCommit": "6f44ce08ed64ca5bfdfc72e8f9ab279b4916139f"
 }
