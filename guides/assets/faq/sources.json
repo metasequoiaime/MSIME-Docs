@@ -1,0 +1,46 @@
+{
+  "author": "WhiteCloud-OuO",
+  "discussion": "https://github.com/metasequoiaime/MSIME-Windows/discussions/258",
+  "images": {
+    "toolbar-missing-icons.png": {
+      "width": 244,
+      "height": 74,
+      "source": "https://github.com/user-attachments/assets/4f337b5f-62a1-4ac7-90ce-1f1c005bd03b"
+    },
+    "font-file.png": {
+      "width": 253,
+      "height": 105,
+      "source": "https://github.com/user-attachments/assets/be16443d-7fa3-4a00-93d2-ad8d804d47e4"
+    },
+    "toolbar-restored-icons.png": {
+      "width": 251,
+      "height": 73,
+      "source": "https://github.com/user-attachments/assets/2ad2d37d-390e-4765-af21-06faec179e23"
+    },
+    "renderer-setting.png": {
+      "width": 894,
+      "height": 707,
+      "source": "https://github.com/user-attachments/assets/69f6da00-bf39-4d1e-8d34-5a5ba88e2732"
+    },
+    "vc-runtime-installed.png": {
+      "width": 484,
+      "height": 26,
+      "source": "https://github.com/user-attachments/assets/b337ff37-73be-4322-883f-7b77d2f17cf4"
+    },
+    "vc-runtime-download.png": {
+      "width": 1132,
+      "height": 735,
+      "source": "https://github.com/user-attachments/assets/7bb095fe-3108-4968-876a-b61a48488fa3"
+    },
+    "vc-runtime-install.png": {
+      "width": 481,
+      "height": 298,
+      "source": "https://github.com/user-attachments/assets/c3eb4628-d4da-41e2-9eaa-68c4017ad88a"
+    },
+    "webview2-download.png": {
+      "width": 448,
+      "height": 299,
+      "source": "https://github.com/user-attachments/assets/fd6d862a-a2b8-4b59-a468-6937d3424929"
+    }
+  }
+}
