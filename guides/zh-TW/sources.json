@@ -23,9 +23,9 @@
     },
     "faq.md": {
       "source": "guides/faq.md",
-      "sourceSha256": "ac9d68b66e1c90f90242d6355c8150d16bda12fa27077128cc7a133d2a8508f8",
+      "sourceSha256": "210589b2bbd42c62d89013b064f317e0dd5858a532e4aac22fef16d4e02cc5b2",
       "translation": "guides/zh-TW/faq.md"
     }
   },
-  "sourceBaseCommit": "6f44ce08ed64ca5bfdfc72e8f9ab279b4916139f"
+  "sourceBaseCommit": "249d61e006d76f1831873bbe9f6d9c57a2277ea0"
 }

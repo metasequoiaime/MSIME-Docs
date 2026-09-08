@@ -29,6 +29,25 @@
 
 來源：[Windows #232](https://github.com/metasequoiaime/MSIME-Windows/issues/232)、[社群圖文步驟 · Discussion #258](https://github.com/metasequoiaime/MSIME-Windows/discussions/258)、[微軟字型說明](https://learn.microsoft.com/en-us/windows/apps/design/iconography/segoe-fluent-icons-font#how-do-i-get-this-font)。快捷鍵以 [Windows 指南](https://msime.app/zh-TW/docs/windows/#快捷鍵)為準。
 
+![工具欄圖示缺失時的表現](../assets/faq/toolbar-missing-icons.png)
+
+工具欄圖示缺失時的表現。
+
+![解壓後安裝 Segoe Fluent Icons.ttf 字型](../assets/faq/font-file.png)
+
+解壓後安裝 Segoe Fluent Icons.ttf 字型。
+
+![安裝字型並重啟後，工具欄圖示恢復](../assets/faq/toolbar-restored-icons.png)
+
+安裝字型並重啟後，工具欄圖示恢復。
+
+![仍有問題時，在外觀設定中切換介面渲染為 WebView2](../assets/faq/renderer-setting.png)
+
+仍有問題時，在外觀設定中切換介面渲染為 WebView2。
+
+截圖由 WhiteCloud-OuO 提供，來自 [Discussion #258](https://github.com/metasequoiaime/MSIME-Windows/discussions/258)。介面可能隨版本調整。
+
+
 ### 候選字視窗太大、字太小，或每頁候選數量不合習慣？
 
 在“设置 → 外观”調整“候选窗字号”“候选窗预编辑字号”和“每页候选项数量”。文件所核對的介面支援字級 12～32 像素、每頁 3～9 項；也能切換橫向或縱向排列。候選數量只影響分頁，不會減少總候選結果。
@@ -51,6 +70,21 @@
 
 依據：[Windows 指南 · 安裝後無法使用或設定視窗閃退](https://msime.app/zh-TW/docs/windows/#安裝後無法使用或設定視窗閃退)、[社群圖文排查 · Discussion #258](https://github.com/metasequoiaime/MSIME-Windows/discussions/258)。
 
+![已安裝的執行庫應包含 x64](../assets/faq/vc-runtime-installed.png)
+
+已安裝的執行庫應包含 x64。
+
+![在微軟下載頁選擇 X64 對應的連結](../assets/faq/vc-runtime-download.png)
+
+在微軟下載頁選擇 X64 對應的連結。
+
+![執行安裝程式，閱讀並同意許可後安裝；版本號以當前下載為準](../assets/faq/vc-runtime-install.png)
+
+執行安裝程式，閱讀並同意許可後安裝；版本號以當前下載為準。
+
+截圖由 WhiteCloud-OuO 提供，來自 [Discussion #258](https://github.com/metasequoiaime/MSIME-Windows/discussions/258)。介面可能隨版本調整。
+
+
 ### 安裝好了，但找不到設定入口？
 
 先按 `Win + Space` 切換到水杉輸入法，再右鍵語言欄的輸入法圖示，或使用懸浮工具列裡的設定入口。
@@ -68,6 +102,13 @@
 這是社群討論提供的排查路徑，不代表所有設定打不開的問題都由 WebView2 導致。如果只有某個應用無法顯示或送出文字，先在記事本中對比，回報時寫清應用名稱、版本及是否以管理員身份執行。
 
 依據：[Windows 指南 · 更新、備份與故障排查](https://msime.app/zh-TW/docs/windows/#更新備份與故障排查)、[社群圖文排查 · Discussion #258](https://github.com/metasequoiaime/MSIME-Windows/discussions/258)、[微軟 WebView2 Runtime 說明](https://learn.microsoft.com/en-us/microsoft-edge/webview2/concepts/distribution#the-evergreen-runtime-distribution-mode)。
+
+![WebView2 下載頁：選擇 Evergreen Standalone Installer 下的 x64](../assets/faq/webview2-download.png)
+
+WebView2 下載頁：選擇 Evergreen Standalone Installer 下的 x64。
+
+截圖由 WhiteCloud-OuO 提供，來自 [Discussion #258](https://github.com/metasequoiaime/MSIME-Windows/discussions/258)。介面可能隨版本調整。
+
 
 ### 設定頁提示找不到 imesettings 的伺服器 IP，應該改 DNS 嗎？
 
