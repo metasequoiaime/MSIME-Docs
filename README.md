@@ -26,6 +26,12 @@ Windows 指南是官网对应正文的唯一来源。修改用户说明请在本
 
 仓库边界与数据来源见[公共仓库与平台架构](architecture/repositories.md)。
 
+## 繁體中文
+
+[Windows 使用指南](guides/zh-TW/windows.md) · [macOS 使用指南](guides/zh-TW/macos.md) · [macOS 語音](guides/zh-TW/macos-voice.md) · [Linux 使用指南](guides/zh-TW/linux.md) · [常見問題](guides/zh-TW/faq.md)。
+
+繁體譯文與簡體原文均在本倉維護，網站使用固定 gitlink 渲染。`guides/zh-TW/sources.json` 記錄翻譯核對的來源提交與內容摘要；原文變更時需同步核對譯文。程式碼、檔名及引號內的應用程式選項保留原文，避免與實際介面不符。
+
 ## 开发与维护
 
 | 说明 | 阅读入口 |
