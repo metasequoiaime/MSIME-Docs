@@ -1,14 +1,13 @@
 # 公共仓库与平台架构
 
-公共部分已合并：Engine、Dict、CustomDict、HelpCode 和 VoiceInput 统一到 MSIME-Engine。Windows 组件统一到 MSIME-Windows 的目录中；Windows、Linux、Apple 保留各自的平台边界；官网、用户文档、皮肤示例、pinyin_cpp、pinyin_python 和 n-gram 等仓库保持独立。
+公共部分已合并：Engine、HelpCode 和 VoiceInput 统一到 MSIME-Engine；词库源数据（原 Dict 与 CustomDict）统一到 [msime-dictionary](https://github.com/metasequoiaime/msime-dictionary)。Windows 组件统一到 MSIME-Windows 的目录中；Windows、Linux、Apple 保留各自的平台边界；官网、用户文档、皮肤示例、pinyin_cpp、pinyin_python 和 n-gram 等仓库保持独立。
 
 公共 API、资源包与各平台实际固定版本的接入状态，以及后续迁移的验收条件，见[平台接入矩阵](platform-adoption.md)。矩阵区分主分支源码、在途实现和产品发布。
 
 | 位置 | 当前职责 |
 | --- | --- |
 | [MSIME-Engine](https://github.com/metasequoiaime/MSIME-Engine) 的 core、schemes 等目录 | 输入会话、候选、查询和学习 |
-| Engine/dictionary | 桌面和移动词库构建，根 build_profile.py 是公开入口 |
-| Engine/dictionary/custom | 可验证的自定义词典与翻译包 |
+| [msime-dictionary](https://github.com/metasequoiaime/msime-dictionary) | 词库源数据：基础词库（`cn/`、`en/`）、人工维护词条与翻译（`custom/`）、专业词库（`packs/`）；由 msime 的 `crates/dict-builder` 按固定提交构建 |
 | Engine/helpcode | 辅助码数据与来源说明 |
 | Engine/voice | 公共识别、文本整理、音频采集与可选 Whisper 接口 |
 | Engine/contracts | 输入法协议、WebView 消息和词库格式契约 |
@@ -23,9 +22,9 @@
 
 平台通过固定 Engine 提交消费代码和辅助码。语音模块按需构建，普通输入引擎不会因合仓而强制加载录音设备、网络服务或 Whisper 模型。macOS 的菜单与快捷键调用公共库，Windows Server 的录音采集也使用同一实现；服务商配置和原生交互由平台维护。
 
-词库发布与代码版本分开：Engine 的 `dict-*` release 提供数据和 `dictionary-manifest.json`，各平台的 `product-lock.json` 记录发布仓库、源提交及文件摘要。平台的 Engine gitlink 可能与生成数据的提交不同，不能互相冒充。更新数据时先验证摘要、格式及来源，再按平台既有流程回放用户词库。
+词库发布与代码版本分开：`dict-*` release 提供数据和 `dictionary-manifest.json`（已发布版本在 MSIME-Engine，之后由 msime 的词库发布流程发布），各平台的 `product-lock.json` 记录发布仓库、源提交及文件摘要。平台的 Engine gitlink 可能与生成数据的提交不同，不能互相冒充。更新数据时先验证摘要、格式及来源，再按平台既有流程回放用户词库。
 
-合仓使用保留历史的导入方式，原始提交和第三方声明仍可追溯。10 个被替代的旧公共/Windows 组件仓库均已归档，保留历史和已有 Release；当前修改应提交到 Engine 或 Windows 对应目录。旧版 `MSIME-Dict/dict-2026.09.05` 不会被新产物覆盖。
+合仓使用保留历史的导入方式，原始提交和第三方声明仍可追溯。10 个被替代的旧公共/Windows 组件仓库均已归档，保留历史和已有 Release；当前修改应提交到 Engine 或 Windows 对应目录。旧版 `MSIME-Dict/dict-2026.09.05` 不会被新产物覆盖。2026-09-30 词库源数据从 Engine 的 `dictionary/` 与 msime-customdict 移入 msime-dictionary 时直接复制内容，来源提交记录在该仓 README 与提交说明中。
 
 ## 一次输入如何流转
 
@@ -66,7 +65,8 @@ Windows 的 TSF DLL 加载到宿主应用中，Server 在独立进程中调度�
 | --- | --- |
 | 某个宿主中的按键、光标、候选窗、焦点、安装或上屏问题 | 对应 [Windows](https://github.com/metasequoiaime/MSIME-Windows)、[Apple](https://github.com/metasequoiaime/MSIME-Apple) 或 [Linux](https://github.com/metasequoiaime/MSIME-Linux) 平台仓库 |
 | 候选顺序、组词、联想或纠错问题 | [Engine](https://github.com/metasequoiaime/MSIME-Engine) |
-| 词条、拼音、权重或词库构建问题 | [Engine/dictionary](https://github.com/metasequoiaime/MSIME-Engine/tree/develop/dictionary) |
+| 词条、拼音或权重问题 | [msime-dictionary](https://github.com/metasequoiaime/msime-dictionary) |
+| 词库构建问题 | [msime](https://github.com/metasequoiaime/msime) 的 `crates/dict-builder` |
 | 辅助码筛选或数据问题 | [Engine/helpcode](https://github.com/metasequoiaime/MSIME-Engine/tree/develop/helpcode) |
 | Windows 设置页面、托盘、工具栏 | [Windows/server](https://github.com/metasequoiaime/MSIME-Windows/tree/develop/server) |
 | Windows 安装、升级与卸载 | [Windows/installer](https://github.com/metasequoiaime/MSIME-Windows/tree/develop/installer) |

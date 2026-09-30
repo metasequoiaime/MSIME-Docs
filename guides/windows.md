@@ -507,7 +507,7 @@ mail	example@example.com	10
 - [MSIME-Engine](https://github.com/metasequoiaime/MSIME-Engine)：跨平台输入引擎，各平台前端共用。
 - [Windows/ui-html](https://github.com/metasequoiaime/MSIME-Windows/tree/develop/ui-html)：WebView2 界面资源。
 - [Windows/ui](https://github.com/metasequoiaime/MSIME-Windows/tree/develop/ui)：自研原生 GUI 框架。
-- [Engine/dictionary](https://github.com/metasequoiaime/MSIME-Engine/tree/develop/dictionary)：公共词库、自定义包和构建器。
+- [msime-dictionary](https://github.com/metasequoiaime/msime-dictionary)：词库源数据，含基础词库、人工维护词条与专业词库。
 - [Engine/helpcode](https://github.com/metasequoiaime/MSIME-Engine/tree/develop/helpcode)：辅助码。
 - [MSIME-Apple](https://github.com/metasequoiaime/MSIME-Apple) / [MSIME-Linux](https://github.com/metasequoiaime/MSIME-Linux)：macOS、iOS 与 Linux 前端。
 
