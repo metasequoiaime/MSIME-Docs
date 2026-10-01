@@ -3,27 +3,27 @@
   "files": {
     "windows.md": {
       "source": "guides/windows.md",
-      "sourceSha256": "6f3b64701387dfbfb65a88a7dd5e3dd0e04308c256f4e3a5eeee978c4573216d",
+      "sourceSha256": "dedd01e299f7810796d09939aa26c328b59ec2bbd50ab599c41810f25a454d64",
       "translation": "guides/zh-TW/windows.md"
     },
     "macos.md": {
       "source": "guides/macos.md",
-      "sourceSha256": "146e1b51edbdac86005556c678aa5a7778e7bb224f699075b150d79d2b2568b0",
+      "sourceSha256": "755ae7bd2fda1e2909e46b8a28160371d7311002e0be031cf77f610830fdc734",
       "translation": "guides/zh-TW/macos.md"
     },
     "macos-voice.md": {
       "source": "guides/macos-voice.md",
-      "sourceSha256": "4e8f07a7910ac07fead2e246e9e86ffa69db66ef3d459717aae1684f6d9e0d43",
+      "sourceSha256": "4a8ecb72e2cec73517b5e52734cd6b71abe61b73ed3f3a8bbd094dc2ce7c5bac",
       "translation": "guides/zh-TW/macos-voice.md"
     },
     "linux.md": {
       "source": "guides/linux.md",
-      "sourceSha256": "f812125b32d82741f3fd9af2ff3275bc2ac9736b182e7a5d92aed3701d393bf1",
+      "sourceSha256": "67a364cc0730467b9d779c34d172b9075826aa4712767f13e8fd56971c0c6af1",
       "translation": "guides/zh-TW/linux.md"
     },
     "faq.md": {
       "source": "guides/faq.md",
-      "sourceSha256": "210589b2bbd42c62d89013b064f317e0dd5858a532e4aac22fef16d4e02cc5b2",
+      "sourceSha256": "40610d1010054cf9cfa53f7ad3ecacbfbfc204e82bb4b90d08db5e3e995179b4",
       "translation": "guides/zh-TW/faq.md"
     }
   },
