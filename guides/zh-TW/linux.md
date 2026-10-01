@@ -1,18 +1,20 @@
 # Linux（IBus）使用指南
 
-水杉 Linux 前端接入 IBus，提供全拼、雙拼、五筆和日語羅馬音輸入，以及 GTK 設定與桌面工具。本文按 2026-09-06 的 Linux 原始碼整理；已發布安裝套件與主分支可能存在功能差異，請同時檢視對應 Release。
+水杉 Linux 前端接入 IBus，提供全拼、雙拼、五筆和日語羅馬音輸入，以及 GTK 設定與桌面工具。本文按 2026-09-06 的 Linux 原始碼整理，對應已歸檔的 [msime-linux](https://github.com/metasequoiaime/msime-linux) 儲存庫發布的 v0.8.2（Latest）。v0.9.1（Pre-release）改為預設開啟逗號句號翻頁和混合英文、Emoji 候選；其他版本與本文可能存在功能差異，請同時檢視對應 Release。
+
+Linux 開發已併入 [msime](https://github.com/metasequoiaime/msime) 主儲存庫的 [`platforms/linux`](https://github.com/metasequoiaime/msime/tree/develop/platforms/linux)。新宿主同時提供 IBus 與 Fcitx5 兩個入口，目前只在 `develop` 分支上，主儲存庫還沒有發布 `linux-v` 版本。新宿主的安裝、首次配置（`msime-linux-setup`）和設定檔案位置都與本文不同；本文只適用於上述已發布的安裝套件。
 
 本頁採用臺灣繁體中文用語；引號內的應用程式選項、程式碼、檔名與範例保留原文，方便對照實際介面。
 
 ## 下載與啟用
 
-在 [Linux Releases](https://github.com/metasequoiaime/MSIME-Linux/releases) 選擇適合發行版與處理器架構的 DEB 或 RPM。`amd64` / `x86_64` 對應 64 位元 Intel/AMD，`arm64` / `aarch64` 對應 64 位元 ARM。包的系統依賴以對應版本發布說明和套件管理器檢查結果為準。
+在 [msime-linux Releases](https://github.com/metasequoiaime/msime-linux/releases) 選擇適合發行版與處理器架構的 DEB 或 RPM。該儲存庫已歸檔為唯讀，已有 Release 仍可下載但不再更新；官網下載頁提供的也是這裡的安裝套件。`amd64` / `x86_64` 對應 64 位元 Intel/AMD，`arm64` / `aarch64` 對應 64 位元 ARM。包的系統依賴以對應版本發布說明和套件管理器檢查結果為準。
 
-Debian/Ubuntu 使用 `sudo apt install ./下载的文件.deb`；使用 DNF 的系統可用 `sudo dnf install ./下载的文件.rpm`。將示例檔名替換為實際下載路徑。不要混用發行版套件和目前使用者安裝；原始碼安裝及 TGZ 的開發用法見 [Linux 儲存庫](https://github.com/metasequoiaime/MSIME-Linux#readme)。
+Debian/Ubuntu 使用 `sudo apt install ./下载的文件.deb`；使用 DNF 的系統可用 `sudo dnf install ./下载的文件.rpm`。將示例檔名替換為實際下載路徑。不要混用發行版套件和目前使用者安裝；原始碼安裝及 TGZ 的開發用法見 [msime-linux 儲存庫](https://github.com/metasequoiaime/msime-linux#readme)。
 
 安裝後登出並重新登入，在桌面“输入源”或 IBus 設定中新增“Metasequoia IME”，切換後在文字框輸入 `nihao`，按空格選擇候選。本前端使用 IBus；桌面使用其他輸入法框架時需按發行版說明配置 IBus 會話。
 
-如果是透過原始碼的 `scripts/install.sh` 為目前使用者安裝，指令碼還會寫入 `environment.d/10-metasequoiaime.conf`，讓 IBus 找到使用者元件目錄，需登出登入才生效。IBus 不會僅因詞庫位於 `XDG_DATA_HOME` 就自動發現元件；目前使用者安裝的具體註冊與臨時會話命令見實現倉 README。
+如果是透過原始碼的 `scripts/install.sh` 為目前使用者安裝，指令碼還會寫入 `environment.d/10-metasequoiaime.conf`，讓 IBus 找到使用者元件目錄，需登出登入才生效。IBus 不會僅因詞庫位於 `XDG_DATA_HOME` 就自動發現元件；目前使用者安裝的具體註冊與臨時會話命令見 msime-linux 儲存庫 README。
 
 ## 輸入與快捷鍵
 
@@ -36,7 +38,7 @@ Debian/Ubuntu 使用 `sudo apt install ./下载的文件.deb`；使用 DNF 的�
 
 全拼與雙拼的輔助碼分別開啟，支援藍天小雨點、自然碼、首右 2.0、首右 Plus、小鶴。輔助碼在完整拼寫之後才生效。調頻可選關閉、置頂、折半、線性前移或一次置前；觸發次數和線性步長取值為 1～10。
 
-設定檔案為 `${XDG_CONFIG_HOME:-$HOME/.config}/metasequoiaime/config.ini`。通常優先用設定程式修改；手工編輯前先停止水杉引擎，以免執行中儲存覆蓋改動。完整配置鍵與分組見 [Linux 操作與設定](https://github.com/metasequoiaime/MSIME-Linux#操作与设置)。
+設定檔案為 `${XDG_CONFIG_HOME:-$HOME/.config}/metasequoiaime/config.ini`。通常優先用設定程式修改；手工編輯前先停止水杉引擎，以免執行中儲存覆蓋改動。完整配置鍵與分組見 [Linux 操作與設定](https://github.com/metasequoiaime/msime-linux#操作与设置)。
 
 ## 快捷模式與混合候選
 
@@ -80,7 +82,7 @@ AI、翻譯和語音憑證按服務商儲存在桌面 Secret Service（例如 GN
 
 使用者資料預設位於 `~/.local/share/metasequoiaime/`；設定了 `XDG_DATA_HOME` 時位於該目錄的 `metasequoiaime/` 子目錄。`msime_user.db` 記錄學習權重和使用者變更。備份時停止水杉引擎，複製資料目錄與配置目錄；不要只備份隨發行包提供的基礎詞庫。
 
-包安裝透過對應套件管理器升級或解除安裝，例如 `sudo apt remove metasequoia-ime-linux`。目前使用者原始碼安裝使用實現倉的 `scripts/install.sh` 升級，安裝前停止引擎，指令碼會驗證新資料並回放使用者記錄。
+包安裝透過對應套件管理器升級或解除安裝，例如 `sudo apt remove metasequoia-ime-linux`。目前使用者原始碼安裝使用 msime-linux 儲存庫的 `scripts/install.sh` 升級，安裝前停止引擎，指令碼會驗證新資料並回放使用者記錄。
 
 原始碼安裝的 `scripts/uninstall.sh` 保留學習資料；只有確認無需保留時才使用 `--purge`，它會進一步清理設定、詞庫、剪貼簿歷史與學習資料。解除安裝後重啟 IBus 或登出登入以重新整理輸入源。
 
@@ -91,4 +93,4 @@ AI、翻譯和語音憑證按服務商儲存在桌面 Secret Service（例如 GN
 - **語音無法錄製**：檢查錄音工具、裝置和權限；`--file` 可幫助區分採集失敗與轉寫失敗。
 - **線上結果不出現**：檢查功能開關、HTTPS 地址、模型及鑰匙串，先確認本地候選正常。
 
-向 [Linux Issues](https://github.com/metasequoiaime/MSIME-Linux/issues) 提供發行版、桌面環境、會話型別、輸入法版本、安裝方式與重現步驟。日誌和截圖先去除憑證及真實輸入。完整資料流見 [Linux 隱私說明](https://github.com/metasequoiaime/MSIME-Linux/blob/main/PRIVACY.md)。
+msime-linux 已歸檔並關閉 Issues，請向 [msime Issues](https://github.com/metasequoiaime/msime/issues) 回報，並提供發行版、桌面環境、會話型別、輸入法版本、安裝方式與重現步驟。日誌和截圖先去除憑證及真實輸入。已發布安裝套件的完整資料流見 [msime-linux 隱私說明](https://github.com/metasequoiaime/msime-linux/blob/main/PRIVACY.md)。
