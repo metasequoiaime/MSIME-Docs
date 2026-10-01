@@ -63,7 +63,7 @@
 先檢查 **Microsoft Visual C++ x64 執行階段**。Server 和設定程式是 64 位元程式，只安裝 x86 版本並不夠。
 
 1. Windows 10 可在“设置 → 应用 → 应用和功能 → 程序和功能”檢查已安裝的 Microsoft Visual C++ Redistributable 項目，確認是否包含 **x64**。
-2. 開啟[微軟官方下載頁](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist)，選擇 x64 的 `vc_redist.x64.exe`，執行並按提示安裝；已安裝時可嘗試“修复”。
+2. 直接下載微軟官方的 [`vc_redist.x64.exe`](https://aka.ms/vc14/vc_redist.x64.exe)，執行並按提示安裝；已安裝時可嘗試“修复”。
 3. 完成後重啟 Windows，再用 `Win + Space` 切換到水杉輸入法。
 
 仍有問題時，先儲存錯誤提示和事件檢視器記錄。不要先清空使用者資料，否則可能丟失詞條和排查依據。
