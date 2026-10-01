@@ -27,7 +27,7 @@
 - 設定視窗開啟後立即消失；
 - Windows 事件檢視器記錄 `MetasequoiaImeServer.exe` 或 `MetasequoiaImeSettings.exe` 在 `MSVCP140.dll` 中以 `0xc0000005` 異常退出。
 
-遇到上述情況時，請前往[微軟官方下載頁面](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist?view=msvc-170)，在最新支援版本中下載並安裝 x64 架構的 `vc_redist.x64.exe`。如果安裝程式提供“修复”選項，請執行修復；安裝完成後建議重新啟動 Windows，再執行水杉輸入法。不要用 `vc_redist.x86.exe` 代替 x64 版本。
+遇到上述情況時，請直接下載並安裝微軟官方的 [`vc_redist.x64.exe`](https://aka.ms/vc14/vc_redist.x64.exe)。如果安裝程式提供“修复”選項，請執行修復；安裝完成後建議重新啟動 Windows，再執行水杉輸入法。不要用 `vc_redist.x86.exe` 代替 x64 版本。
 
 如果安裝最新 x64 執行階段並重啟後仍無法使用，請先保留錯誤提示、事件檢視器記錄和重現步驟，再按本文“反馈”一節提交問題。不要先解除安裝清理，以免丟失定位所需的資訊。
 
