@@ -10,8 +10,6 @@
 
 請前往[官網下載頁面](https://msime.app/zh-TW/download/)獲取最新版本，並按對應版本的 GitHub Release 說明完成安裝。不同版本的安裝方式和功能可能會有變化，以發布說明為準。
 
-![安裝完成截圖](https://msime.app/screenshots/install-finish.png)
-
 安裝完成後，請確認 Metasequoia IME Server 和 Metasequoia IME Watchdog 已經啟動。按 `Win + Space` 切換到水杉輸入法後即可開始使用。
 
 ### 安裝後無法使用或設定視窗閃退
@@ -504,14 +502,23 @@ mail	example@example.com	10
 
 ## 專案結構
 
-- [MSIME-Windows](https://github.com/metasequoiaime/MSIME-Windows)：Windows 平臺產品（TSF、Server、GUI、頁面與安裝器）。
-- [Windows/server](https://github.com/metasequoiaime/MSIME-Windows/tree/develop/server)：Windows 常駐後端，負責引擎排程和視窗渲染。
-- [MSIME-Engine](https://github.com/metasequoiaime/MSIME-Engine)：跨平臺輸入引擎，各平臺前端共用。
-- [Windows/ui-html](https://github.com/metasequoiaime/MSIME-Windows/tree/develop/ui-html)：WebView2 介面資源。
-- [Windows/ui](https://github.com/metasequoiaime/MSIME-Windows/tree/develop/ui)：自研原生 GUI 框架。
-- [msime-dictionary](https://github.com/metasequoiaime/msime-dictionary)：詞庫源資料，含基礎詞庫、人工維護詞條與專業詞庫。
-- [Engine/helpcode](https://github.com/metasequoiaime/MSIME-Engine/tree/develop/helpcode)：輔助碼。
-- [MSIME-Apple](https://github.com/metasequoiaime/MSIME-Apple) / [MSIME-Linux](https://github.com/metasequoiaime/MSIME-Linux)：macOS、iOS 與 Linux 前端。
+Windows 版的全部一方原始碼都在 [msime-windows](https://github.com/metasequoiaime/msime-windows) 一個儲存庫裡，一次 clone 就能構建完整產品：
+
+- [windows/](https://github.com/metasequoiaime/msime-windows/tree/develop/windows)：TSF 文本服務 DLL，負責按鍵預判、焦點和與 Server 之間的管道協議。
+- [server/](https://github.com/metasequoiaime/msime-windows/tree/develop/server)：常駐 Server，負責引擎排程、候選字視窗與工具列的宿主、設定程式和詞庫管理。
+- [engine/](https://github.com/metasequoiaime/msime-windows/tree/develop/engine)：輸入引擎，包括輸入會話、候選查詢、輔助碼和語音模組。源自已歸檔的 MSIME-Engine，現在隨 Windows 版一起開發。
+- [ui/](https://github.com/metasequoiaime/msime-windows/tree/develop/ui)：自研原生 GUI 框架，Win32 視窗加 Direct2D / DirectWrite 渲染。
+- [ui-html/](https://github.com/metasequoiaime/msime-windows/tree/develop/ui-html)：WebView2 介面資源，包括候選字視窗、懸浮工具列、托盤選單和設定頁。
+- [installer/](https://github.com/metasequoiaime/msime-windows/tree/develop/installer)：Inno Setup 安裝器。
+
+相關儲存庫：
+
+- [msime](https://github.com/metasequoiaime/msime)：多平臺主儲存庫，包含 macOS、iOS、Linux、Android 與 HarmonyOS 的前端，以及它們共用的 Rust 輸入引擎。
+- [msime-dictionary](https://github.com/metasequoiaime/msime-dictionary)：詞庫源資料，包括基礎詞庫、人工維護的詞條與專業詞庫。
+- [msime-cloud](https://github.com/metasequoiaime/msime-cloud)：雲端候選字、AI 聯想、翻譯與語音辨識的後端。
+- [msime-skins](https://github.com/metasequoiaime/msime-skins)：候選字視窗佈景主題。
+
+MSIME-Engine、MSIME-Linux、MSIME-UI、MSIME-UiHtml、MSIME-Windows-Server 等舊儲存庫已經歸檔，保留歷史提交紀錄和已發布的 Release。
 
 文件會隨功能繼續更新。如果發現說明和實際行為不一致，歡迎在 [GitHub Issues](https://github.com/metasequoiaime/MSIME-Windows/issues) 中回報。
 
